@@ -1,18 +1,18 @@
 ///<reference path='three.d.ts'/>
 
-///<reference path='IScene.ts'/>
+///<reference path='BaseScene.ts'/>
 
-class CrateScene implements IScene {
-    private scene: THREE.Scene = new THREE.Scene();
-    private camera: THREE.OrthographicCamera = new THREE.OrthographicCamera(0, 1, 1, 0, 0.01, 100);
+///<reference path='Rain.ts'/>
 
-    constructor () {
-        // construct scene and preload level
+class CrateScene extends BaseScene {
+    constructor (renderer: THREE.Renderer) {
+        super(renderer);
 
-        this.scene.add(this.camera);
+        this.scene.add(new Rain());
     }
 
     public render(dt: number) {
+        super.render(dt);
     }
 
     public update(dt: number) {

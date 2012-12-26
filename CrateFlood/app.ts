@@ -8,7 +8,7 @@
 ///<reference path='config.ts'/>
 
 ///<reference path='IGame.ts'/>
-///<reference path='IScene.ts'/>
+///<reference path='BaseScene.ts'/>
 
 ///<reference path='LoaderScene.ts'/>
 ///<reference path='StartScreenScene.ts'/>
@@ -23,10 +23,10 @@ class CrateFlood implements IGame {
     private clock: THREE.Clock = new THREE.Clock(true);
     private renderer: THREE.CanvasRenderer = new THREE.CanvasRenderer();
 
-    private loaderscene: IScene;
-    private startscreenscene: IScene;
-    private gamescene: IScene;
-    private pausescene: IScene;
+    private loaderscene: BaseScene;
+    private startscreenscene: BaseScene;
+    private gamescene: BaseScene;
+    private pausescene: BaseScene;
 
     private paused: bool = false;
     private started: bool = false;
@@ -45,11 +45,11 @@ class CrateFlood implements IGame {
         //todo - lose/regain focus/pause the game controls
 
         //load the levels (todo - loading callback)
-        this.loaderscene = new LoaderScene();
+        this.loaderscene = new LoaderScene(this.renderer);
 
-        this.startscreenscene = new StartScreenScene();
-        this.gamescene = new CrateScene();
-        this.pausescene = new PauseScene();
+        this.startscreenscene = new StartScreenScene(this.renderer);
+        this.gamescene = new CrateScene(this.renderer);
+        this.pausescene = new PauseScene(this.renderer);
         
         //stats
         this.renderstats.setMode(1);
@@ -91,7 +91,7 @@ class CrateFlood implements IGame {
             this.startscreenscene.update(dt);
         }
 
-        if (!this.paused) {
+        if (!this.paused && !this.started) {
             this.gamescene.update(dt);
         }
 
@@ -104,6 +104,11 @@ class CrateFlood implements IGame {
 
     private resume() {
         this.paused = false;
+    }
+
+    private reset(): void {
+        this.paused = false;
+        this.started = false;
     }
 
     private resize(): void {

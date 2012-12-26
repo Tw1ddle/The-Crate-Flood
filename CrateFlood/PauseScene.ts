@@ -1,16 +1,14 @@
 ///<reference path='three.d.ts'/>
 
-///<reference path='IScene.ts'/>
+///<reference path='BaseScene.ts'/>
 
-class PauseScene implements IScene {
-    private scene: THREE.Scene = new THREE.Scene();
-    private camera: THREE.OrthographicCamera = new THREE.OrthographicCamera(0, 1, 1, 0, 0.01, 100);
-
-    constructor () {
-        this.scene.add(this.camera);
+class PauseScene extends BaseScene {
+    constructor (renderer: THREE.Renderer) {
+        super(renderer);
     }
 
     public render(dt: number) {
+        super.render(dt);
     }
 
     public update(dt: number) {

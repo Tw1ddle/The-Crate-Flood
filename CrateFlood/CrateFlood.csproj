@@ -23,6 +23,7 @@
   <ItemGroup>
     <Content Include="app.css" />
     <Content Include="assert.ts" />
+    <Content Include="BaseScene.ts" />
     <Content Include="CrateScene.ts" />
     <Content Include="default.htm" />
     <Content Include="app.js">
@@ -36,7 +37,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="stats.d.ts" />
     <Content Include="file1.js">
-      <DependentUpon>Explosion.ts</DependentUpon>
+      <DependentUpon>Layer.ts</DependentUpon>
     </Content>
     <TypeScriptCompile Include="IScene.ts" />
     <TypeScriptCompile Include="config.ts" />
@@ -48,6 +49,7 @@
     <TypeScriptCompile Include="Splash.ts" />
     <TypeScriptCompile Include="Explosion.ts" />
     <TypeScriptCompile Include="Rain.ts" />
+    <TypeScriptCompile Include="Layer.ts" />
     <Content Include="file2.js">
       <DependentUpon>Rain.ts</DependentUpon>
     </Content>
@@ -56,6 +58,7 @@
     <Content Include="jquery-1.8.d.ts" />
     <Content Include="Lightning.ts" />
     <Content Include="PauseScene.ts" />
+    <Content Include="Sparks.d.ts" />
     <Content Include="StartScreenScene.ts" />
     <Content Include="three.d.ts" />
     <Content Include="Water.ts" />

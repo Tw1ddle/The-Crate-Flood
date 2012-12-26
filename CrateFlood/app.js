@@ -11,10 +11,10 @@ var CrateFlood = (function () {
         this.renderer.domElement.addEventListener('mousemove', this.onCanvasMouseMove.bind(this), false);
         this.renderer.domElement.addEventListener('contextmenu', this.onContextRightClick.bind(this), false);
         window.addEventListener('resize', this.resize.bind(this), false);
-        this.loaderscene = new LoaderScene();
-        this.startscreenscene = new StartScreenScene();
-        this.gamescene = new CrateScene();
-        this.pausescene = new PauseScene();
+        this.loaderscene = new LoaderScene(this.renderer);
+        this.startscreenscene = new StartScreenScene(this.renderer);
+        this.gamescene = new CrateScene(this.renderer);
+        this.pausescene = new PauseScene(this.renderer);
         this.renderstats.setMode(1);
         this.renderstats.domElement.style.position = 'absolute';
         this.renderstats.domElement.style.left = '860px';
@@ -43,7 +43,7 @@ var CrateFlood = (function () {
         if(!this.started) {
             this.startscreenscene.update(dt);
         }
-        if(!this.paused) {
+        if(!this.paused && !this.started) {
             this.gamescene.update(dt);
         }
         this.updatestats.end();
@@ -53,6 +53,10 @@ var CrateFlood = (function () {
     };
     CrateFlood.prototype.resume = function () {
         this.paused = false;
+    };
+    CrateFlood.prototype.reset = function () {
+        this.paused = false;
+        this.started = false;
     };
     CrateFlood.prototype.resize = function () {
     };
