@@ -34,9 +34,10 @@ class CrateFlood implements IGame {
     constructor () {
         //setup renderer
         this.renderer.setSize(Config.GAME_WIDTH, Config.GAME_HEIGHT);
+        this.renderer.setClearColor(new THREE.Color(0x880088));
 
-        //set window
-        document.getElementById("maingame").appendChild(this.renderer.domElement);
+        //set game window
+        document.getElementById('maingame').appendChild(this.renderer.domElement);
 
         //event listeners
         this.renderer.domElement.addEventListener('mousemove', this.onCanvasMouseMove.bind(this), false); // 'this' binding - https://developer.mozilla.org/en-US/docs/DOM/element.addEventListener
@@ -91,9 +92,9 @@ class CrateFlood implements IGame {
             this.startscreenscene.update(dt);
         }
 
-        if (!this.paused && !this.started) {
+      //  if (!this.paused && this.started) {
             this.gamescene.update(dt);
-        }
+      //  }
 
         this.updatestats.end();
     }
@@ -112,6 +113,7 @@ class CrateFlood implements IGame {
     }
 
     private resize(): void {
+        this.renderer.setSize(Config.GAME_WIDTH, Config.GAME_HEIGHT);
     }
 
     private onContextRightClick(event: any): void {

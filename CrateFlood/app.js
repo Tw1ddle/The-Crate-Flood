@@ -7,7 +7,8 @@ var CrateFlood = (function () {
         this.paused = false;
         this.started = false;
         this.renderer.setSize(Config.GAME_WIDTH, Config.GAME_HEIGHT);
-        document.getElementById("maingame").appendChild(this.renderer.domElement);
+        this.renderer.setClearColor(new THREE.Color(8913032));
+        document.getElementById('maingame').appendChild(this.renderer.domElement);
         this.renderer.domElement.addEventListener('mousemove', this.onCanvasMouseMove.bind(this), false);
         this.renderer.domElement.addEventListener('contextmenu', this.onContextRightClick.bind(this), false);
         window.addEventListener('resize', this.resize.bind(this), false);
@@ -43,9 +44,7 @@ var CrateFlood = (function () {
         if(!this.started) {
             this.startscreenscene.update(dt);
         }
-        if(!this.paused && !this.started) {
-            this.gamescene.update(dt);
-        }
+        this.gamescene.update(dt);
         this.updatestats.end();
     };
     CrateFlood.prototype.pause = function () {
@@ -59,6 +58,7 @@ var CrateFlood = (function () {
         this.started = false;
     };
     CrateFlood.prototype.resize = function () {
+        this.renderer.setSize(Config.GAME_WIDTH, Config.GAME_HEIGHT);
     };
     CrateFlood.prototype.onContextRightClick = function (event) {
         if(event.button === 2) {
