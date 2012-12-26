@@ -7,6 +7,8 @@ class CrateScene implements IScene {
     private camera: THREE.OrthographicCamera = new THREE.OrthographicCamera(0, 1, 1, 0, 0.01, 100);
 
     constructor () {
+        // construct scene and preload level
+
         this.scene.add(this.camera);
     }
 

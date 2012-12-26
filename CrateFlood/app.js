@@ -4,15 +4,17 @@ var CrateFlood = (function () {
         this.updatestats = new Stats();
         this.clock = new THREE.Clock(true);
         this.renderer = new THREE.CanvasRenderer();
-        this.gamescene = new CrateScene();
-        this.pausescene = new PauseScene();
         this.paused = false;
+        this.started = false;
         this.renderer.setSize(Config.GAME_WIDTH, Config.GAME_HEIGHT);
-        this.renderer.setClearColor(new THREE.Color(16776960), 255);
         document.getElementById("maingame").appendChild(this.renderer.domElement);
         this.renderer.domElement.addEventListener('mousemove', this.onCanvasMouseMove.bind(this), false);
         this.renderer.domElement.addEventListener('contextmenu', this.onContextRightClick.bind(this), false);
         window.addEventListener('resize', this.resize.bind(this), false);
+        this.loaderscene = new LoaderScene();
+        this.startscreenscene = new StartScreenScene();
+        this.gamescene = new CrateScene();
+        this.pausescene = new PauseScene();
         this.renderstats.setMode(1);
         this.renderstats.domElement.style.position = 'absolute';
         this.renderstats.domElement.style.left = '860px';
@@ -27,6 +29,9 @@ var CrateFlood = (function () {
     }
     CrateFlood.prototype.render = function (dt) {
         this.renderstats.begin();
+        if(!this.started) {
+            this.startscreenscene.render(dt);
+        }
         this.gamescene.render(dt);
         if(this.paused) {
             this.pausescene.render(dt);
@@ -35,6 +40,9 @@ var CrateFlood = (function () {
     };
     CrateFlood.prototype.update = function (dt) {
         this.updatestats.begin();
+        if(!this.started) {
+            this.startscreenscene.update(dt);
+        }
         if(!this.paused) {
             this.gamescene.update(dt);
         }
@@ -47,7 +55,6 @@ var CrateFlood = (function () {
         this.paused = false;
     };
     CrateFlood.prototype.resize = function () {
-        return true;
     };
     CrateFlood.prototype.onContextRightClick = function (event) {
         if(event.button === 2) {

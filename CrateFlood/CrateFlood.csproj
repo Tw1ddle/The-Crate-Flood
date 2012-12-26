@@ -36,15 +36,29 @@
   <ItemGroup>
     <TypeScriptCompile Include="stats.d.ts" />
     <Content Include="file1.js">
-      <DependentUpon>config.ts</DependentUpon>
+      <DependentUpon>Explosion.ts</DependentUpon>
     </Content>
     <TypeScriptCompile Include="IScene.ts" />
     <TypeScriptCompile Include="config.ts" />
+    <TypeScriptCompile Include="LoaderScene.ts" />
+    <TypeScriptCompile Include="Tree.ts" />
+    <TypeScriptCompile Include="Island.ts" />
+    <TypeScriptCompile Include="Player.ts" />
+    <TypeScriptCompile Include="Cloud.ts" />
+    <TypeScriptCompile Include="Splash.ts" />
+    <TypeScriptCompile Include="Explosion.ts" />
+    <TypeScriptCompile Include="Rain.ts" />
+    <Content Include="file2.js">
+      <DependentUpon>Rain.ts</DependentUpon>
+    </Content>
+    <Content Include="GameObject.ts" />
     <Content Include="IGame.ts" />
     <Content Include="jquery-1.8.d.ts" />
+    <Content Include="Lightning.ts" />
     <Content Include="PauseScene.ts" />
-    <Content Include="StartScene.ts" />
+    <Content Include="StartScreenScene.ts" />
     <Content Include="three.d.ts" />
+    <Content Include="Water.ts" />
     <Content Include="web.config" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>

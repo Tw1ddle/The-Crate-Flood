@@ -10,7 +10,8 @@
 ///<reference path='IGame.ts'/>
 ///<reference path='IScene.ts'/>
 
-///<reference path='StartScene.ts'/>
+///<reference path='LoaderScene.ts'/>
+///<reference path='StartScreenScene.ts'/>
 ///<reference path='CrateScene.ts'/>
 ///<reference path='PauseScene.ts'/>
 
@@ -22,15 +23,17 @@ class CrateFlood implements IGame {
     private clock: THREE.Clock = new THREE.Clock(true);
     private renderer: THREE.CanvasRenderer = new THREE.CanvasRenderer();
 
-    private gamescene: IScene = new CrateScene();
-    private pausescene: IScene = new PauseScene();
+    private loaderscene: IScene;
+    private startscreenscene: IScene;
+    private gamescene: IScene;
+    private pausescene: IScene;
 
     private paused: bool = false;
+    private started: bool = false;
     
     constructor () {
         //setup renderer
         this.renderer.setSize(Config.GAME_WIDTH, Config.GAME_HEIGHT);
-        this.renderer.setClearColor(new THREE.Color(0xFFFF00), 255);
 
         //set window
         document.getElementById("maingame").appendChild(this.renderer.domElement);
@@ -39,6 +42,14 @@ class CrateFlood implements IGame {
         this.renderer.domElement.addEventListener('mousemove', this.onCanvasMouseMove.bind(this), false); // 'this' binding - https://developer.mozilla.org/en-US/docs/DOM/element.addEventListener
         this.renderer.domElement.addEventListener('contextmenu', this.onContextRightClick.bind(this), false);
         window.addEventListener('resize', this.resize.bind(this), false);
+        //todo - lose/regain focus/pause the game controls
+
+        //load the levels (todo - loading callback)
+        this.loaderscene = new LoaderScene();
+
+        this.startscreenscene = new StartScreenScene();
+        this.gamescene = new CrateScene();
+        this.pausescene = new PauseScene();
         
         //stats
         this.renderstats.setMode(1);
@@ -53,11 +64,16 @@ class CrateFlood implements IGame {
         this.updatestats.domElement.style.top = '0px';
         document.body.appendChild(this.updatestats.domElement);
 
+        //go
         this.animate();
     }
 
     private render(dt: number) {
         this.renderstats.begin();
+
+        if (!this.started) {
+            this.startscreenscene.render(dt);
+        }
 
         this.gamescene.render(dt);
 
@@ -70,6 +86,10 @@ class CrateFlood implements IGame {
 
     private update(dt: number) {
         this.updatestats.begin();
+
+        if (!this.started) {
+            this.startscreenscene.update(dt);
+        }
 
         if (!this.paused) {
             this.gamescene.update(dt);
@@ -86,8 +106,7 @@ class CrateFlood implements IGame {
         this.paused = false;
     }
 
-    private resize(): bool {
-        return true;
+    private resize(): void {
     }
 
     private onContextRightClick(event: any): void {
