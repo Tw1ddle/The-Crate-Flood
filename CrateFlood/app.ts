@@ -15,7 +15,7 @@
 ///<reference path='CrateScene.ts'/>
 ///<reference path='PauseScene.ts'/>
 
-class CrateFlood implements IGame {
+class Main implements IGame {
     private gui: any;
     private renderstats: Stats = new Stats();
     private updatestats: Stats = new Stats();
@@ -32,6 +32,9 @@ class CrateFlood implements IGame {
     private started: bool = false;
     
     constructor () {
+        //random number generator
+        Random.setSeed(Date.now());
+
         //setup renderer
         this.renderer.setSize(Config.GAME_WIDTH, Config.GAME_HEIGHT);
         this.renderer.setClearColor(new THREE.Color(0x880088));
@@ -140,5 +143,5 @@ class CrateFlood implements IGame {
 }
 
 window.onload = () => {
-    var crateFlood: CrateFlood = new CrateFlood();
+    var main: Main = new Main();
 };

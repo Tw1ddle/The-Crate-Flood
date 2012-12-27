@@ -53,6 +53,10 @@
     <TypeScriptCompile Include="utility.ts" />
     <TypeScriptCompile Include="random.ts" />
     <TypeScriptCompile Include="tween.d.ts" />
+    <TypeScriptCompile Include="pxloader.d.ts" />
+    <Content Include="file1.js">
+      <DependentUpon>pxloader.d.ts</DependentUpon>
+    </Content>
     <Content Include="file2.js">
       <DependentUpon>Rain.ts</DependentUpon>
     </Content>
@@ -60,7 +64,7 @@
     <Content Include="jquery-1.8.d.ts" />
     <Content Include="Lightning.ts" />
     <Content Include="PauseScene.ts" />
-    <Content Include="SoundManager.ts" />
+    <Content Include="soundmanager.d.ts" />
     <Content Include="sparks.d.ts" />
     <Content Include="StartScreenScene.ts" />
     <Content Include="three.d.ts" />
