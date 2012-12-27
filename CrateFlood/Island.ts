@@ -1,5 +1,5 @@
 ///<reference path='Sprite.ts'/>
-///<reference path='Three.d.ts'/>
+///<reference path='three.d.ts'/>
 
 class Island extends Sprite {
 }

@@ -33,6 +33,10 @@ module Debug {
         folder.add(object.rotation, 'x', -Math.PI, Math.PI, 0.1).listen();
         folder.add(object.rotation, 'y', -Math.PI, Math.PI, 0.1).listen();
         folder.add(object.rotation, 'z', -Math.PI, Math.PI, 0.1).listen();
+
+        folder.add(object.scale, 'x', -10, 10, 0.1).listen();
+        folder.add(object.scale, 'y', -10, 10, 0.1).listen();
+        folder.add(object.scale, 'z', -10, 10, 0.1).listen();
     }
 
     export function addItems(gui: any, objects: THREE.Object3D[], tag?: string): void {

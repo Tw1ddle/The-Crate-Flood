@@ -13,6 +13,12 @@ var BaseScene = (function () {
         this.renderer.render(this.scene, this.camera);
     };
     BaseScene.prototype.update = function (dt) {
+        for(var i = 0; i < this.scene.children.length; i++) {
+            var object = this.scene.children[i];
+            if(Utility.isFunction(object.update)) {
+                object.update(dt);
+            }
+        }
     };
     return BaseScene;
 })();

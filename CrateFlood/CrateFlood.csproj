@@ -36,9 +36,6 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="stats.d.ts" />
-    <Content Include="file1.js">
-      <DependentUpon>tween.d.ts</DependentUpon>
-    </Content>
     <TypeScriptCompile Include="IScene.ts" />
     <TypeScriptCompile Include="config.ts" />
     <TypeScriptCompile Include="LoaderScene.ts" />
@@ -63,7 +60,8 @@
     <Content Include="jquery-1.8.d.ts" />
     <Content Include="Lightning.ts" />
     <Content Include="PauseScene.ts" />
-    <Content Include="Sparks.d.ts" />
+    <Content Include="SoundManager.ts" />
+    <Content Include="sparks.d.ts" />
     <Content Include="StartScreenScene.ts" />
     <Content Include="three.d.ts" />
     <Content Include="Water.ts" />

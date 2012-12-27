@@ -130,7 +130,7 @@ class CrateFlood implements IGame {
         var _this = this;
     
         var _cb = function () { 
-            var dt: number = _this.clock.getDelta();
+            var dt: number = _this.clock.getDelta() * 1000; // ms
             _this.update(dt);
             _this.render(dt);
             requestAnimationFrame(_cb);

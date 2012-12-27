@@ -71,7 +71,7 @@ var CrateFlood = (function () {
     CrateFlood.prototype.animate = function () {
         var _this = this;
         var _cb = function () {
-            var dt = _this.clock.getDelta();
+            var dt = _this.clock.getDelta() * 1000;
             _this.update(dt);
             _this.render(dt);
             requestAnimationFrame(_cb);

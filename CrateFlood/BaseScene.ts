@@ -1,6 +1,8 @@
 ///<reference path='IScene.ts'/>
 ///<reference path='Debug.ts'/>
 
+///<reference path='Utility.ts'/>
+
 ///<reference path='dat.gui.d.ts'/>
 
 class BaseScene implements IScene {
@@ -17,15 +19,24 @@ class BaseScene implements IScene {
         }
     }
 
-    public scene: THREE.Scene;
+    public scene: THREE.Scene; // public for debugging
     public camera: THREE.OrthographicCamera;
-
+    
     public debug: any;
 
     public render(dt: number): void {
         this.renderer.render(this.scene, this.camera);
     }
 
+    // if this is slow then it might be worth making a separate list of updateable objects
     public update(dt: number): void {
+        for (var i = 0; i < this.scene.children.length; i++) {
+
+            var object : any = this.scene.children[i];
+
+            if (Utility.isFunction( object.update )) {
+                object.update(dt);
+            }
+        }
     }
 }
