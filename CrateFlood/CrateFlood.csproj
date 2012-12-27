@@ -37,7 +37,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="stats.d.ts" />
     <Content Include="file1.js">
-      <DependentUpon>dat.gui.d.ts</DependentUpon>
+      <DependentUpon>Sprite.ts</DependentUpon>
     </Content>
     <TypeScriptCompile Include="IScene.ts" />
     <TypeScriptCompile Include="config.ts" />
@@ -51,6 +51,7 @@
     <TypeScriptCompile Include="Rain.ts" />
     <TypeScriptCompile Include="Layer.ts" />
     <TypeScriptCompile Include="dat.gui.d.ts" />
+    <TypeScriptCompile Include="Sprite.ts" />
     <Content Include="file2.js">
       <DependentUpon>Rain.ts</DependentUpon>
     </Content>

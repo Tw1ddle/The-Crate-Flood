@@ -4,30 +4,34 @@
 ///<reference path='BaseScene.ts'/>
 
 ///<reference path='Rain.ts'/>
+///<reference path='Sprite.ts'/>
 ///<reference path='Layer.ts'/>
 ///<reference path='config.ts'/>
+///<reference path='assets.ts'/>
 
 class CrateScene extends BaseScene {
     constructor (renderer: THREE.Renderer) {
         super(renderer);
 
         this.camera.position.z = 200;
+        this.camera.toOrthographic();
+        this.camera.setZoom(2.0); // for some reason the orthographic view in the combined camera seems to be twice as big as it should be
 
-        var geometry = new THREE.CubeGeometry( 50, 50, 1 );
-		var material = new THREE.MeshBasicMaterial( { color: 0xffffff, shading: THREE.FlatShading, overdraw: true } );
+        var texture = THREE.ImageUtils.loadTexture(Assets.Image.moon);
 
-		var cube = new THREE.Mesh( geometry, material );
+		var plane : Sprite = new Sprite(77, 75, texture);
 
-		cube.position.x = 0;
-		cube.position.y = 0;
-		cube.position.z = 10;
-
-		this.scene.add( cube );
+		this.scene.add( plane );
 
 		if (Config.DEBUG) {
-            this.debug.add(cube.position, 'x', -1000, 1000, 0.1).listen();
-            this.debug.add(cube.position, 'y', -1000, 1000, 0.1).listen();
-            this.debug.add(cube.position, 'z', -1000, 1000, 0.1).listen();
+            var cubedebug = this.debug.addFolder('Test');
+            cubedebug.add(plane.position, 'x', -1000, 1000, 0.1).listen();
+            cubedebug.add(plane.position, 'y', -1000, 1000, 0.1).listen();
+            cubedebug.add(plane.position, 'z', -1000, 1000, 0.1).listen();
+
+            cubedebug.add(plane.rotation, 'x', -Math.PI, Math.PI, 0.1).listen();
+            cubedebug.add(plane.rotation, 'y', -Math.PI, Math.PI, 0.1).listen();
+            cubedebug.add(plane.rotation, 'z', -Math.PI, Math.PI, 0.1).listen();
 		}
 
        // this.scene.add(new Rain(new THREE.Vector2(Config.GAME_WIDTH/2, Config.GAME_WIDTH/2)));
@@ -38,6 +42,5 @@ class CrateScene extends BaseScene {
     }
 
     public update(dt: number) {
-        //this.camera.lookAt(new THREE.Vector3(0, 0, 0));
     }
 }
