@@ -7,26 +7,26 @@ var CrateScene = (function (_super) {
     __extends(CrateScene, _super);
     function CrateScene(renderer) {
         _super.call(this, renderer);
-        this.camera.position.z = 200;
-        this.camera.toOrthographic();
-        this.camera.setZoom(2);
-        var texture = THREE.ImageUtils.loadTexture(Assets.Image.moon);
-        var plane = new Sprite(77, 75, texture);
-        this.scene.add(plane);
-        if(Config.DEBUG) {
-            var cubedebug = this.debug.addFolder('Test');
-            cubedebug.add(plane.position, 'x', -1000, 1000, 0.1).listen();
-            cubedebug.add(plane.position, 'y', -1000, 1000, 0.1).listen();
-            cubedebug.add(plane.position, 'z', -1000, 1000, 0.1).listen();
-            cubedebug.add(plane.rotation, 'x', -Math.PI, Math.PI, 0.1).listen();
-            cubedebug.add(plane.rotation, 'y', -Math.PI, Math.PI, 0.1).listen();
-            cubedebug.add(plane.rotation, 'z', -Math.PI, Math.PI, 0.1).listen();
+        var moontex = THREE.ImageUtils.loadTexture(Assets.Image.moon);
+        var hill1 = THREE.ImageUtils.loadTexture(Assets.Image.hill1);
+        var hill2 = THREE.ImageUtils.loadTexture(Assets.Image.hill2);
+        var moon = new Sprite(77, 75, moontex, new THREE.Vector3(260, 170, Layer.moon));
+        this.scene.add(moon);
+        this.scene.add(new Sprite(146, 60, hill1, new THREE.Vector3(270, 30, Layer.hill1)));
+        this.scene.add(new Sprite(208, 89, hill2, new THREE.Vector3(139, 44, Layer.hill2)));
+        this.scene.add(new Tree(new THREE.Vector2(55, 21), 0));
+        this.scene.add(new Tree(new THREE.Vector2(95, 21), 1));
+        this.scene.add(new Tree(new THREE.Vector2(155, 21), 2));
+        if(Debug.ENABLED) {
+            Debug.addItems(this.debug, this.scene.children);
         }
+        this.scene.add(new Rain(new THREE.Vector2(Config.GAME_WIDTH / 2, Config.GAME_WIDTH / 2)));
     }
     CrateScene.prototype.render = function (dt) {
         _super.prototype.render.call(this, dt);
     };
     CrateScene.prototype.update = function (dt) {
+        _super.prototype.update.call(this, dt);
     };
     return CrateScene;
 })(BaseScene);

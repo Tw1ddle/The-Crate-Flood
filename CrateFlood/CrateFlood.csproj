@@ -37,7 +37,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="stats.d.ts" />
     <Content Include="file1.js">
-      <DependentUpon>Sprite.ts</DependentUpon>
+      <DependentUpon>tween.d.ts</DependentUpon>
     </Content>
     <TypeScriptCompile Include="IScene.ts" />
     <TypeScriptCompile Include="config.ts" />
@@ -52,10 +52,13 @@
     <TypeScriptCompile Include="Layer.ts" />
     <TypeScriptCompile Include="dat.gui.d.ts" />
     <TypeScriptCompile Include="Sprite.ts" />
+    <TypeScriptCompile Include="debug.ts" />
+    <TypeScriptCompile Include="utility.ts" />
+    <TypeScriptCompile Include="random.ts" />
+    <TypeScriptCompile Include="tween.d.ts" />
     <Content Include="file2.js">
       <DependentUpon>Rain.ts</DependentUpon>
     </Content>
-    <Content Include="GameObject.ts" />
     <Content Include="IGame.ts" />
     <Content Include="jquery-1.8.d.ts" />
     <Content Include="Lightning.ts" />
