@@ -13,8 +13,8 @@ class BaseScene implements IScene {
         this.camera.position.set(0, 0, 200);
 
         //debugging
-        if (Debug.ENABLED) {
-            this.debug = new dat.GUI();
+        if (Debug.GUI_ENABLED) {
+            this.debug = new dat.gui.GUI();
             Debug.addItem(this.debug, this.camera, 'Camera');
             Debug.addSceneInfo(this.debug, this.scene, 'Scene');
         }

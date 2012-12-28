@@ -18,6 +18,8 @@ module Layer {
 
     export var treesForeground: number = 5;
 
+    export var clouds: number = 7;
+
     export var rain: number = 10;
     export var waterForeground: number = 20;
 

@@ -3,7 +3,7 @@
 ///<reference path='assert.ts'/>
 
 module Debug {
-    export var ENABLED: bool = true;
+    export var GUI_ENABLED: bool = true;
 
     //synchronous
     var uniqueID = (function () {
@@ -24,7 +24,7 @@ module Debug {
     }
 
     export function addItem(gui: any, object: THREE.Object3D, tag?: string): void {
-        assert(ENABLED, "Debug addon called with debugging disabled");
+        assert(GUI_ENABLED, "Debug addon called with debugging disabled");
 
         var folder: any = getFolder(gui, tag);
   

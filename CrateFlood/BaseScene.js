@@ -4,8 +4,8 @@ var BaseScene = (function () {
         this.scene = new THREE.Scene();
         this.camera = new THREE.OrthographicCamera(0, Config.RENDER_WIDTH, Config.RENDER_HEIGHT, 0, -1000, 1000);
         this.camera.position.set(0, 0, 200);
-        if(Debug.ENABLED) {
-            this.debug = new dat.GUI();
+        if(Debug.GUI_ENABLED) {
+            this.debug = new dat.gui.GUI();
             Debug.addItem(this.debug, this.camera, 'Camera');
             Debug.addSceneInfo(this.debug, this.scene, 'Scene');
         }

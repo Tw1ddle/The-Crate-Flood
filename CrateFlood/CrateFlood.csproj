@@ -55,10 +55,11 @@
     <TypeScriptCompile Include="random.ts" />
     <TypeScriptCompile Include="tween.d.ts" />
     <TypeScriptCompile Include="pxloader.d.ts" />
-    <TypeScriptCompile Include="terminal.d.ts" />
+    <TypeScriptCompile Include="terminal.ts" />
     <Content Include="file1.js">
-      <DependentUpon>terminal.d.ts</DependentUpon>
+      <DependentUpon>CrateFlood.ts</DependentUpon>
     </Content>
+    <TypeScriptCompile Include="CrateFlood.ts" />
     <Content Include="file2.js">
       <DependentUpon>Rain.ts</DependentUpon>
     </Content>
@@ -70,7 +71,6 @@
     <Content Include="soundmanager.d.ts" />
     <Content Include="sparks.d.ts" />
     <Content Include="StartScreenScene.ts" />
-    <Content Include="terminal.js" />
     <Content Include="three.d.ts" />
     <Content Include="Water.ts" />
     <Content Include="web.config" />

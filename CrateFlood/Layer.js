@@ -10,6 +10,7 @@ var Layer;
     Layer.earthBackground = -10;
     Layer.middle = 0;
     Layer.treesForeground = 5;
+    Layer.clouds = 7;
     Layer.rain = 10;
     Layer.waterForeground = 20;
     Layer.lightning = 35;

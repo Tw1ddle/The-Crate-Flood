@@ -27,4 +27,4 @@ var Random = (function () {
     }
     return Random;
 })();
-//@ sourceMappingURL=Random.js.map
+//@ sourceMappingURL=random.js.map

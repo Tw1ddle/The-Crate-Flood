@@ -39,14 +39,14 @@ class CrateScene extends BaseScene {
 		this.scene.add(new Sprite(146, 60, hill1, new THREE.Vector3(270, 30, Layer.hill1)));
 		this.scene.add(new Sprite(208, 89, hill2, new THREE.Vector3(139, 44, Layer.hill2)));
 		//this.scene.add(hilltree0);
-      //  this.scene.add(hilltree1);
-      //  this.scene.add(hilltree2);
+        //this.scene.add(hilltree1);
+        //this.scene.add(hilltree2);
         //this.scene.add(player);
-        this.scene.add(new Lightning(new THREE.Vector2(Config.RENDER_WIDTH/2, Config.RENDER_HEIGHT/2)));
+        //this.scene.add(new Lightning(new THREE.Vector2(Config.RENDER_WIDTH/2, Config.RENDER_HEIGHT/2)));
         this.scene.add(new Sprite(Config.RENDER_WIDTH, Config.RENDER_HEIGHT, backgroundGradientTex, new THREE.Vector3(Config.RENDER_WIDTH/2, Config.RENDER_HEIGHT/2, Layer.back)));
         this.scene.add(stars);
 
-		if (Debug.ENABLED) {
+		if (Debug.GUI_ENABLED) {
 		    Debug.addItems(this.debug, this.scene.children);
 
 		    this.debug.add(player.texture.offset, 'x', -1, 1, 0.01);

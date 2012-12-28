@@ -23,4 +23,19 @@ module Utility {
 
         return canvas;
     }
+
+    // https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/keys
+    export function getKeys(object: any): string[] {
+        return Object.keys(object);
+    }
+
+    export function getPropertyValuePairs(object: any): string {
+        var pairs: string = "";
+
+        for (var key in object) {
+            pairs.concat("[" + key + "]=" + object[key]);
+        }
+
+        return pairs;
+    }
 }
