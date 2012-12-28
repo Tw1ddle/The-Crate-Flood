@@ -1,13 +1,5 @@
 var Debug;
 (function (Debug) {
-    var ScreenConsole = (function () {
-        function ScreenConsole() {
-        }
-        ScreenConsole.prototype.write = function (message) {
-        };
-        return ScreenConsole;
-    })();
-    Debug.ScreenConsole = ScreenConsole;    
     Debug.ENABLED = true;
     var uniqueID = (function () {
         var id = 0;

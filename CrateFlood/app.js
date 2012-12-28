@@ -85,6 +85,11 @@ var Main = (function () {
     return Main;
 })();
 window.onload = function () {
+    jQuery(document).ready(function ($) {
+        $('#tilda').tilda(function (command, terminal) {
+            terminal.echo('you typed command "' + command + '"');
+        });
+    });
     var main = new Main();
 };
 //@ sourceMappingURL=app.js.map

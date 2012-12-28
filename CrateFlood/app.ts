@@ -148,5 +148,13 @@ class Main implements IGame {
 }
 
 window.onload = () => {
+
+jQuery(document).ready(function($) {
+    $('#tilda').tilda(function(command, terminal) {
+        terminal.echo('you typed command "' + command + '"');
+    });
+});
+
     var main: Main = new Main();
+
 };

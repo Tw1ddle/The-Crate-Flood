@@ -3,16 +3,6 @@
 ///<reference path='assert.ts'/>
 
 module Debug {
-    export class ScreenConsole {
-        constructor () {
-            
-        }
-
-        public write(message: string) : void {
-        }
-    }
-
-
     export var ENABLED: bool = true;
 
     //synchronous
