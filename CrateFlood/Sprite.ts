@@ -8,13 +8,13 @@ module Animations {
 
 class Sprite extends THREE.Mesh {
     constructor (width: number, height: number, public texture?: THREE.Texture, position?: THREE.Vector3, tileLayout?: THREE.Vector3) {
-        super(new THREE.PlaneGeometry(width, height), new THREE.MeshPhongMaterial({ color: 0xffffff, map: texture, overdraw: true }));
+        super(new THREE.PlaneGeometry(width, height), new THREE.MeshBasicMaterial({ map: texture, overdraw: true }));
 
         if (position != null) {
             this.position.set(position.x, position.y, position.z);
         }
 
-        if (tileLayout == null) {
+        if (!tileLayout) {
             this.tileLayout = new THREE.Vector3(1, 1, 1);
         } else {
             this.tileLayout = tileLayout;

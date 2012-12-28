@@ -5,10 +5,17 @@
 ///<reference path='Assets.ts'/>
 
 class Tree extends Sprite {
-    constructor (position?: THREE.Vector2, id? : number) { 
+    constructor (position?: THREE.Vector2, rotation?: THREE.Vector3, id? : number, layer?: number) { 
+        if (layer == null) {
+            layer = Layer.treesForeground;
+        }
 
         if (id == null) {
             id = Random.nextIntRange(0, 2);
+        }
+
+        if (rotation) {
+            this.rotation = rotation;
         }
 
         assert(id <= 2 && id >= 0);
@@ -29,6 +36,6 @@ class Tree extends Sprite {
             texture = THREE.ImageUtils.loadTexture(Assets.Image.tree3);
         }
 
-        super(size.x, size.y, texture, new THREE.Vector3(position.x, position.y, Layer.treesForeground));
+        super(size.x, size.y, texture, new THREE.Vector3(position.x, position.y, layer));
     }
 }

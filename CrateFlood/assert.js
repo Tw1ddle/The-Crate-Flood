@@ -1,6 +1,6 @@
 function assert(expression, msg) {
     if(!expression) {
-        if(msg === undefined) {
+        if(!msg) {
             window.alert("Assertion failed.");
         } else {
             window.alert("Assertion failed: " + msg);

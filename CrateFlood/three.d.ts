@@ -426,7 +426,7 @@ module THREE{
 		boundRadius:number;
 		boundRadiusScale:number;
 		renderDepth:number;
-		visible:number;
+		visible: bool;
 		castShadow:bool;
 		receiveShadow:bool;
 		frustumCulled:bool;

@@ -1,4 +1,7 @@
 module Assets {
+    export class Preloader {
+    }
+
     export module Image {
         export var hill1: string = '/assets/hill1.png';
         export var hill2: string = '/assets/hill2.png';

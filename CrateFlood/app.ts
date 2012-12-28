@@ -6,6 +6,7 @@
 
 ///<reference path='assets.ts'/>
 ///<reference path='config.ts'/>
+///<reference path='debug.ts'/>
 
 ///<reference path='IGame.ts'/>
 ///<reference path='BaseScene.ts'/>
@@ -32,6 +33,10 @@ class Main implements IGame {
     private started: bool = false;
     
     constructor () {
+        if (Debug.ENABLED) {
+            this.gui = new dat.GUI();
+        }
+
         //random number generator
         Random.setSeed(Date.now());
 

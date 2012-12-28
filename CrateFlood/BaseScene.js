@@ -7,6 +7,7 @@ var BaseScene = (function () {
         if(Debug.ENABLED) {
             this.debug = new dat.GUI();
             Debug.addItem(this.debug, this.camera, 'Camera');
+            Debug.addSceneInfo(this.debug, this.scene, 'Scene');
         }
     }
     BaseScene.prototype.render = function (dt) {

@@ -17,8 +17,7 @@ var Animations;
 var Sprite = (function (_super) {
     __extends(Sprite, _super);
     function Sprite(width, height, texture, position, tileLayout) {
-        _super.call(this, new THREE.PlaneGeometry(width, height), new THREE.MeshPhongMaterial({
-    color: 16777215,
+        _super.call(this, new THREE.PlaneGeometry(width, height), new THREE.MeshBasicMaterial({
     map: texture,
     overdraw: true
 }));
@@ -29,7 +28,7 @@ var Sprite = (function (_super) {
         if(position != null) {
             this.position.set(position.x, position.y, position.z);
         }
-        if(tileLayout == null) {
+        if(!tileLayout) {
             this.tileLayout = new THREE.Vector3(1, 1, 1);
         } else {
             this.tileLayout = tileLayout;

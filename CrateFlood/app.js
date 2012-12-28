@@ -6,6 +6,9 @@ var Main = (function () {
         this.renderer = new THREE.CanvasRenderer();
         this.paused = false;
         this.started = false;
+        if(Debug.ENABLED) {
+            this.gui = new dat.GUI();
+        }
         Random.setSeed(Date.now());
         this.renderer.setSize(Config.GAME_WIDTH, Config.GAME_HEIGHT);
         this.renderer.setClearColor(new THREE.Color(8913032));

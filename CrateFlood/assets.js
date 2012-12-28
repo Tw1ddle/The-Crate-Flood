@@ -1,5 +1,10 @@
 var Assets;
 (function (Assets) {
+    var Preloader = (function () {
+        function Preloader() { }
+        return Preloader;
+    })();
+    Assets.Preloader = Preloader;    
     (function (Image) {
         Image.hill1 = '/assets/hill1.png';
         Image.hill2 = '/assets/hill2.png';
