@@ -57,10 +57,13 @@
     <TypeScriptCompile Include="pxloader.d.ts" />
     <TypeScriptCompile Include="terminal.ts" />
     <Content Include="file1.js">
-      <DependentUpon>extensions.d.ts</DependentUpon>
+      <DependentUpon>math.ts</DependentUpon>
     </Content>
-    <TypeScriptCompile Include="CrateFlood.ts" />
+    <TypeScriptCompile Include="Game.ts" />
     <TypeScriptCompile Include="extensions.d.ts" />
+    <TypeScriptCompile Include="CanvasText.ts" />
+    <TypeScriptCompile Include="IMoveable.ts" />
+    <TypeScriptCompile Include="math.ts" />
     <Content Include="file2.js">
       <DependentUpon>Rain.ts</DependentUpon>
     </Content>

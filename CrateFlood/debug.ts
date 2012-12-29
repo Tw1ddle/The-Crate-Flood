@@ -23,7 +23,13 @@ module Debug {
         }
     }
 
-    export function addItem(gui: any, object: THREE.Object3D, tag?: string): void {
+    export function addCamera(gui: any, camera: THREE.OrthographicCamera, tag?: string): dat.gui.GUI {
+        var folder = getFolder(addItem(gui, camera, tag);
+
+        return folder;
+    }
+
+    export function addItem(gui: any, object: THREE.Object3D, tag?: string): dat.gui.GUI {
         assert(GUI_ENABLED, "Debug addon called with debugging disabled");
 
         var folder: any = getFolder(gui, tag);
@@ -42,6 +48,8 @@ module Debug {
 
         folder.add(object, 'visible').listen();
         folder.add(object, 'id').listen();
+
+        return folder;
     }
 
     export function addItems(gui: any, objects: THREE.Object3D[], tag?: string): void {

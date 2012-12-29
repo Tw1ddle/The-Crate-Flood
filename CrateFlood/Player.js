@@ -27,10 +27,10 @@ var Player = (function (_super) {
                 7
             ],
             times: [
-                2000, 
-                2000, 
-                2000, 
-                2000
+                2, 
+                2, 
+                2, 
+                2
             ]
         });
         this.currentAnimation = 0;

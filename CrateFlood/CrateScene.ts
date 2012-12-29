@@ -11,6 +11,8 @@
 ///<reference path='Player.ts'/>
 ///<reference path='Tree.ts'/>
 ///<reference path='Lightning.ts'/>
+///<reference path='Island.ts'/>
+///<reference path='Cloud.ts'/>
 
 class CrateScene extends BaseScene {
     constructor (renderer: THREE.Renderer) {
@@ -22,11 +24,13 @@ class CrateScene extends BaseScene {
 
         var playertex = THREE.ImageUtils.loadTexture(Assets.Sprite.player1);
         var backgroundGradientTex = THREE.ImageUtils.loadTexture(Assets.Image.bggradient);
+        var groundTex = THREE.ImageUtils.loadTexture(Assets.Image.ground);
 
         var starsTex = THREE.ImageUtils.loadTexture(Assets.Image.stars);
 
 		var moon = new Sprite(77, 75, moontex, new THREE.Vector3(260, 170, Layer.moon));
 		var stars = new Sprite(Config.RENDER_WIDTH, Config.RENDER_HEIGHT, starsTex, new THREE.Vector3(Config.RENDER_WIDTH / 2, Config.RENDER_HEIGHT / 2, Layer.stars));
+		
 		
 
 		var player = new Player(new THREE.Vector3(100, 100, Layer.middle));
@@ -43,8 +47,20 @@ class CrateScene extends BaseScene {
         //this.scene.add(hilltree2);
         //this.scene.add(player);
         //this.scene.add(new Lightning(new THREE.Vector2(Config.RENDER_WIDTH/2, Config.RENDER_HEIGHT/2)));
-        this.scene.add(new Sprite(Config.RENDER_WIDTH, Config.RENDER_HEIGHT, backgroundGradientTex, new THREE.Vector3(Config.RENDER_WIDTH/2, Config.RENDER_HEIGHT/2, Layer.back)));
+       // this.scene.add(new Lightning(new THREE.Vector2(Config.RENDER_WIDTH/2, Config.RENDER_HEIGHT/2)));
+        this.scene.add(new Sprite(400, 250, backgroundGradientTex, new THREE.Vector3(Config.RENDER_WIDTH/2, Config.RENDER_HEIGHT/2, Layer.back)));
         this.scene.add(stars);
+        this.scene.add(new Island(new THREE.Vector2(50, 120)));
+        this.scene.add(new Island(new THREE.Vector2(200, 100)));
+        this.scene.add(new Island(new THREE.Vector2(290, 60)));
+        this.scene.add(new Island(new THREE.Vector2(100, 180)));
+        this.scene.add(new Sprite(400, 19, groundTex, new THREE.Vector3(Config.RENDER_WIDTH / 2, 0, Layer.front)));
+
+        this.scene.add(new Cloud(new THREE.Vector2(-100, Random.nextDoubleRange(200, 225)), new THREE.Vector3(0, 0, 0), 0));
+        this.scene.add(new Cloud(new THREE.Vector2(-100, Random.nextDoubleRange(150, 200)), new THREE.Vector3(0, 0, 0), 1));
+        this.scene.add(new Cloud(new THREE.Vector2(-100, Random.nextDoubleRange(50, 100)), new THREE.Vector3(0, 0, 0), 2));
+
+        this.scene.add(new Rain(new THREE.Vector2(200, 100)));
 
 		if (Debug.GUI_ENABLED) {
 		    Debug.addItems(this.debug, this.scene.children);
@@ -52,8 +68,6 @@ class CrateScene extends BaseScene {
 		    this.debug.add(player.texture.offset, 'x', -1, 1, 0.01);
             this.debug.add(player.texture.offset, 'y', -1, 1, 0.01);
 		}
-
-        this.scene.add(new Rain(new THREE.Vector2(Config.GAME_WIDTH/2, Config.GAME_WIDTH/2)));
     }
 
     public render(dt: number) {

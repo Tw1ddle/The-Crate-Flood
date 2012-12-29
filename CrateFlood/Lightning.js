@@ -10,8 +10,8 @@ var Lightning = (function (_super) {
         texture.needsUpdate = true;
         _super.call(this, Config.RENDER_WIDTH, Config.RENDER_HEIGHT, texture, new THREE.Vector3(position.x, position.y, Layer.lightning));
         this.cumulativeTime = 0;
-        this.flashDuration = 50;
-        this.frequency = 4000;
+        this.flashDuration = 0.1;
+        this.frequency = 4;
         this.visible = false;
     }
     Lightning.prototype.update = function (dt) {

@@ -3,8 +3,8 @@ var Main = (function () {
         this.renderstats = new Stats();
         this.updatestats = new Stats();
         this.clock = new THREE.Clock(true);
-        this.game = new CrateFlood();
         Random.setSeed(Date.now());
+        this.game = new Game();
         this.renderstats.setMode(1);
         this.renderstats.domElement.style.position = 'absolute';
         this.renderstats.domElement.style.left = '860px';
@@ -31,7 +31,7 @@ var Main = (function () {
     Main.prototype.animate = function () {
         var _this = this;
         var _cb = function () {
-            var dt = _this.clock.getDelta() * 1000;
+            var dt = _this.clock.getDelta();
             _this.update(dt);
             _this.render(dt);
             requestAnimationFrame(_cb);
@@ -44,9 +44,9 @@ window.onload = function () {
     if(Debug.TERMINAL_ENABLED) {
         var terminal = new Debug.Terminal();
         if(window.console) {
-            console.terminal = function (msg) {
-                console.log(msg);
-            };
+            function customLog(message) {
+                terminal.write(message);
+            }
         }
     }
     window["main"] = new Main();

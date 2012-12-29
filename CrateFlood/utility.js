@@ -35,34 +35,20 @@ var Utility;
     function getPropertyValuePairs(object) {
         var pairs = new Array();
         for(var key in object) {
-            pairs.push(key + "=[" + object[key] + "]");
+            pairs.push("\n\n" + key + "=" + object[key]);
         }
         return pairs;
     }
     Utility.getPropertyValuePairs = getPropertyValuePairs;
-    function executeFunctionByName(functionName, context) {
-        var more = [];
-        for (var _i = 0; _i < (arguments.length - 2); _i++) {
-            more[_i] = arguments[_i + 2];
-        }
-        var args = Array.prototype.slice.call(arguments, 2);
+    function executeFunctionByName(functionName, context, params) {
         var namespaces = functionName.split(".");
         var func = namespaces.pop();
         for(var i = 0; i < namespaces.length; i++) {
             context = context[namespaces[i]];
         }
-        return context[func].apply(context, args);
+        return context[func].apply(context, params);
     }
     Utility.executeFunctionByName = executeFunctionByName;
-    function getObjectByName(name, context) {
-        var namespaces = name.split(".");
-        var func = namespaces.pop();
-        for(var i = 0; i < namespaces.length; i++) {
-            context = context[namespaces[i]];
-        }
-        return context[func];
-    }
-    Utility.getObjectByName = getObjectByName;
     function dumpObjectIndented(obj, indent) {
         if (typeof indent === "undefined") { indent = " "; }
         var result = "";

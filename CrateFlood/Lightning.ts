@@ -15,8 +15,8 @@ class Lightning extends Sprite {
         super(Config.RENDER_WIDTH, Config.RENDER_HEIGHT, texture, new THREE.Vector3(position.x, position.y, Layer.lightning));
 
         this.cumulativeTime = 0;
-        this.flashDuration = 50;
-        this.frequency = 4000;
+        this.flashDuration = 0.10;
+        this.frequency = 4.00;
         this.visible = false;
     }
 

@@ -12,7 +12,7 @@ class Player extends Sprite {
 
         super(28, 28, texture, position, new THREE.Vector3(4, 2, 8));
         
-        this.anims.push({ frames: [4, 5, 6, 7], times: [2000, 2000, 2000, 2000] });
+        this.anims.push({ frames: [4, 5, 6, 7], times: [2, 2, 2, 2] });
 
         this.currentAnimation = 0;
     }

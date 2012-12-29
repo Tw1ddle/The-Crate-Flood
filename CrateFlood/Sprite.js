@@ -21,12 +21,17 @@ var Sprite = (function (_super) {
     map: texture,
     overdraw: true
 }));
+        this.width = width;
+        this.height = height;
         this.texture = texture;
-        this.timeAccumulator = 0;
+        this.animationTimeAccumulator = 0;
         this.currentFrame = 0;
+        this.velocity = new THREE.Vector2(0, 0);
         this.anims = new Array();
         if(position != null) {
             this.position.set(position.x, position.y, position.z);
+        } else {
+            this.position = new THREE.Vector3(0, 0, 0);
         }
         if(!tileLayout) {
             this.tileLayout = new THREE.Vector3(1, 1, 1);
@@ -37,15 +42,17 @@ var Sprite = (function (_super) {
     }
     Sprite.prototype.update = function (dt) {
         if(this.anims.length != 0) {
-            this.timeAccumulator += dt;
-            if(this.timeAccumulator > this.anims[this.currentAnimation].times[this.currentFrame]) {
+            this.animationTimeAccumulator += dt;
+            if(this.animationTimeAccumulator > this.anims[this.currentAnimation].times[this.currentFrame]) {
                 console.info("setting tile");
                 this.setTile();
             }
         }
+        this.position.x += this.velocity.x * dt;
+        this.position.y += this.velocity.y * dt;
     };
     Sprite.prototype.setTile = function () {
-        this.timeAccumulator = 0;
+        this.animationTimeAccumulator = 0;
         this.texture.wrapS = this.texture.wrapT = THREE.RepeatWrapping;
         this.texture.repeatVector2 = new THREE.Vector2(1 / this.tileLayout.x, 1 / this.tileLayout.y);
         this.currentFrame++;

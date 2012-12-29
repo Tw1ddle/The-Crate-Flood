@@ -35,7 +35,7 @@ module Utility {
         return Object.keys(object);
     }
 
-    //non-recursive
+    //non-recursive??
     export function getValues(object: Object): string[] {
         var values: string[] = new string[];
         
@@ -46,34 +46,26 @@ module Utility {
         return values;
     }
 
-    //non-recursive
+    //non-recursive??
     export function getPropertyValuePairs(object: Object): string[] {
         var pairs: string[] = new string[];
 
         for (var key in object) {
-            pairs.push(key + "=[" + object[key] + "]");
+            pairs.push("\n\n" + key + "=" + object[key]);
         }
 
         return pairs;
     }
 
-    export function executeFunctionByName(functionName: string, context: any, ...more: any[] /*, args */) {
-        var args = Array.prototype.slice.call(arguments, 2);
+    export function executeFunctionByName(functionName: string, context: any, params:any[]): any {
         var namespaces = functionName.split(".");
         var func = namespaces.pop();
-        for (var i = 0; i < namespaces.length; i++) {
-            context = context[namespaces[i]];
-        }
-        return context[func].apply(context, args);
-    }
 
-    export function getObjectByName(name: string, context: any): any {
-        var namespaces = name.split(".");
-        var func = namespaces.pop();
-        for (var i = 0; i < namespaces.length; i++) {
+        for(var i = 0; i < namespaces.length; i++) {
             context = context[namespaces[i]];
         }
-        return context[func];
+
+        return context[func].apply(context, params);
     }
 
     //recursive

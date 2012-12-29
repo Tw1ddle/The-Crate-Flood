@@ -12,6 +12,7 @@ var Layer;
     Layer.treesForeground = 5;
     Layer.clouds = 7;
     Layer.rain = 10;
+    Layer.islands = 15;
     Layer.waterForeground = 20;
     Layer.lightning = 35;
     Layer.front = 50;

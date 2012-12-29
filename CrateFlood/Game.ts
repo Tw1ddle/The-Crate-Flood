@@ -18,7 +18,7 @@
 ///<reference path='CrateScene.ts'/>
 ///<reference path='PauseScene.ts'/>
 
-class CrateFlood implements IGame {
+class Game implements IGame {
     private gui: any;
 
     private clock: THREE.Clock = new THREE.Clock(true);
@@ -30,7 +30,7 @@ class CrateFlood implements IGame {
     private pausescene: BaseScene;
 
     private paused: bool = false;
-    private started: bool = false;
+    private started: bool = true;
     
     constructor () {
         if (Debug.GUI_ENABLED) {
@@ -40,6 +40,7 @@ class CrateFlood implements IGame {
         //setup renderer
         this.renderer.setSize(Config.GAME_WIDTH, Config.GAME_HEIGHT);
         this.renderer.setClearColor(new THREE.Color(0x880088));
+        this.renderer.autoClear = false; //don't clear the screen between scene renders
 
         //set game window
         document.getElementById('maingame').appendChild(this.renderer.domElement);
@@ -52,51 +53,56 @@ class CrateFlood implements IGame {
         this.pausescene = new PauseScene(this.renderer);
     }
 
-    public foo(): void {
-        console.info("blah");
+    public pause() : void {
+        this.paused = true;
     }
 
-    public bar(num: number): void {
-        console.info(num);
+    public resume(): void {
+        this.paused = false;
     }
 
-    public baz(obj: Object): void {
-        console.info(obj.toString());
+    public start(): void {
+        this.started = true;
     }
 
+    public stop(): void {
+        this.started = false;
+    }
 
-    private render(dt: number) {
+    public togglePaused(p: bool): void {
+        console.info(p);
+
+        this.paused = p;
+
+        console.info(this.paused);
+    }
+
+    private render(dt: number): void {
+        this.renderer.clear();
 
         if (!this.started) {
-            this.startscreenscene.render(dt);
+       //     this.startscreenscene.render(dt);
         }
 
-        this.gamescene.render(dt);
+        if (!this.paused) {
+            this.gamescene.render(dt);
+        }
 
         if (this.paused) {
-            this.pausescene.render(dt);
+       //     this.pausescene.render(dt);
         }
-
     }
 
-    private update(dt: number) {
+    private update(dt: number): void {
 
         if (!this.started) {
             this.startscreenscene.update(dt);
         }
 
-      //  if (!this.paused && this.started) {
+        if (!this.paused) {
             this.gamescene.update(dt);
-      //  }
+        }
 
-    }
-
-    private pause() {
-        this.paused = true;
-    }
-
-    private resume() {
-        this.paused = false;
     }
 
     private reset(): void {

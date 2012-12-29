@@ -1,20 +1,12 @@
-///<reference path='three.d.ts'/>
-///<reference path='jquery-1.8.d.ts'/>
 ///<reference path='stats.d.ts'/>
-///<reference path='extensions.d.ts'/>
-
 ///<reference path='assert.ts'/>
 
-///<reference path='assets.ts'/>
-///<reference path='config.ts'/>
 ///<reference path='debug.ts'/>
 ///<reference path='terminal.ts'/>
 ///<reference path='random.ts'/>
 
 ///<reference path='IGame.ts'/>
-///<reference path='BaseScene.ts'/>
-
-///<reference path='CrateFlood.ts'/>
+///<reference path='Game.ts'/>
 
 class Main {
     private renderstats: Stats = new Stats();
@@ -22,11 +14,17 @@ class Main {
 
     private clock: THREE.Clock = new THREE.Clock(true);
 
-    private game: IGame = new CrateFlood();
+    public game: IGame;
     
     constructor () {
         //random number generator
         Random.setSeed(Date.now());
+
+        //load resources
+        //...
+
+        //load game
+        this.game = new Game(); //public so we can get at it through terminal
         
         //stats
         this.renderstats.setMode(1);
@@ -67,7 +65,7 @@ class Main {
         var _this = this;
     
         var _cb = function () { 
-            var dt: number = _this.clock.getDelta() * 1000; // ms
+            var dt: number = _this.clock.getDelta(); // seconds
             _this.update(dt);
             _this.render(dt);
             requestAnimationFrame(_cb);
@@ -83,12 +81,16 @@ window.onload = () => {
 
         // override the browser console and direct stuff to the terminal
         if (window.console) {
-            console.terminal = function (msg: any) : void {
-                console.log(msg);
-                //terminal.write(msg);
+            function customLog(message: any) {
+                terminal.write(message); //todo
             }
+
+          //  <any>console.log = customLog;
+          //  <any>console.info = customLog;
+          //  <any>console.warn = customLog;
         }
+
     }
     
-    window["main"] = new Main(); //add Main to the window context so the terminal can get at it
+    window["main"] = new Main();
 };
