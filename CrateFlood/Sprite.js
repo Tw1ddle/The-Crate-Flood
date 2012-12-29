@@ -28,6 +28,7 @@ var Sprite = (function (_super) {
         this.currentFrame = 0;
         this.velocity = new THREE.Vector2(0, 0);
         this.anims = new Array();
+        ((this)).doubleSided = true;
         if(position != null) {
             this.position.set(position.x, position.y, position.z);
         } else {

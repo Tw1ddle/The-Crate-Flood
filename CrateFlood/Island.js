@@ -7,7 +7,7 @@ var Island = (function (_super) {
     __extends(Island, _super);
     function Island(position, rotation, id, layer) {
         if(layer == null) {
-            layer = Layer.islands;
+            layer = Layer.islandsForeground;
         }
         if(id == null) {
             id = Random.nextIntRange(0, 4);

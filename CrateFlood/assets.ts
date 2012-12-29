@@ -29,6 +29,8 @@ module Assets {
         export var bggradient: string = '/assets/bggradient.png';
 
         export var stars: string = '/assets/stars.png';
+
+        export var crate: string = '/assets/crate.png';
     }
 
     export module Sprite {

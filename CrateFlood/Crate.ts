@@ -12,21 +12,15 @@
 class Crate extends Sprite {
     constructor (position: THREE.Vector2, rotation?: THREE.Vector3, id?: number, layer?: number) {
         if (layer == null) {
-            layer = Layer.clouds;
+            layer = Layer.crate;
         }
 
-       if (id == null) {
-            id = Random.nextIntRange(0, 2);
-        }
-
-        if (rotation) {
+        if (rotation == null) {
             this.rotation = rotation;
         }
-         
-        assert(id <= 2 && id >= 0);
 
-        var size: THREE.Vector2 = new THREE.Vector2();
-        var texture: THREE.Texture;
+        var size: THREE.Vector2 = new THREE.Vector2(20, 16);
+        var texture: THREE.Texture = THREE.ImageUtils.loadTexture(Assets.Image.crate);
 
         super(size.x, size.y, texture, new THREE.Vector3(position.x, position.y, layer));
     }

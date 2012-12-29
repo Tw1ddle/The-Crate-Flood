@@ -18,8 +18,6 @@ var Debug;
     function addCamera(gui, camera, tag) {
         var folder = addItem(gui, camera, tag);
         folder.add(camera, 'frustumCulled').listen();
-        folder.add(camera, 'near', 0, 1, 0.1).listen();
-        folder.add(camera, 'far', 0, 100, 0.1).listen();
         return folder;
     }
     Debug.addCamera = addCamera;

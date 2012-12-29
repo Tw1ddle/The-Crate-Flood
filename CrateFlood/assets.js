@@ -24,6 +24,7 @@ var Assets;
         Image.ground = '/assets/ground.png';
         Image.bggradient = '/assets/bggradient.png';
         Image.stars = '/assets/stars.png';
+        Image.crate = '/assets/crate.png';
     })(Assets.Image || (Assets.Image = {}));
     var Image = Assets.Image;
     (function (Sprite) {

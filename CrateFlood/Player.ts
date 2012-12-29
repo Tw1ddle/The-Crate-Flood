@@ -16,4 +16,12 @@ class Player extends Sprite {
 
         this.currentAnimation = 0;
     }
+
+    public update(dt: number): void {
+        //controls
+        //change state
+        //set velocity
+
+        super.update(dt);
+    }
 }

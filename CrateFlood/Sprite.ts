@@ -12,6 +12,8 @@ class Sprite extends THREE.Mesh implements IMoveable {
     constructor (public width: number, public height: number, public texture?: THREE.Texture, position?: THREE.Vector3, tileLayout?: THREE.Vector3) {
         super(new THREE.PlaneGeometry(width, height), new THREE.MeshBasicMaterial({ map: texture, overdraw: true }));
 
+        (<any>(this)).doubleSided = true;
+
         if (position != null) {
             this.position.set(position.x, position.y, position.z); //for now, don't use the reference
         } else {
@@ -69,7 +71,7 @@ class Sprite extends THREE.Mesh implements IMoveable {
     private tileLayout: THREE.Vector3; //xdim, ydim, total sprites
     private currentFrame: number = 0;
 
-    public velocity: THREE.Vector2 = new THREE.Vector2(0, 0);
+    public velocity: THREE.Vector2 = new THREE.Vector2(0, 0);  
 
     public currentAnimation: number;
     public anims: { frames: number[]; times: number[]; }[] = new Array();

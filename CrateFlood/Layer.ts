@@ -7,8 +7,8 @@ module Layer {
 
     export var waterBackground: number = -20;
 
-    export var hill2: number = -16;
-    export var hill1: number = -15;
+    export var hill2: number = -18;
+    export var hill1: number = -14;
 
     export var treesBackground: number = -12;
 
@@ -22,11 +22,15 @@ module Layer {
 
     export var rain: number = 10;
 
-    export var islands: number = 15;
+    export var crate: number = 13;
 
-    export var waterForeground: number = 20;
+    export var player: number = 19;
 
-    export var lightning: number = 35;
+    export var islandsForeground: number = 25;
+
+    export var waterForeground: number = 35;
+
+    export var lightning: number = 45;
 
     export var front: number = 50;
 }

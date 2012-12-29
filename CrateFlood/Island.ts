@@ -9,7 +9,7 @@
 class Island extends Sprite {
         constructor (position?: THREE.Vector2, rotation?: THREE.Vector3, id? : number, layer?: number) { 
         if (layer == null) {
-            layer = Layer.islands;
+            layer = Layer.islandsForeground;
         }
 
         if (id == null) {

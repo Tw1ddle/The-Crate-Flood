@@ -27,8 +27,6 @@ module Debug {
         var folder: dat.gui.GUI = addItem(gui, camera, tag);
 
         folder.add(camera, 'frustumCulled').listen();
-        folder.add(camera, 'near', 0, 1, 0.1).listen();
-        folder.add(camera, 'far', 0, 100, 0.1).listen();
 
         return folder;
     }
