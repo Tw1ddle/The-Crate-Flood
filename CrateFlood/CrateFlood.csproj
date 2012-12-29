@@ -57,7 +57,7 @@
     <TypeScriptCompile Include="pxloader.d.ts" />
     <TypeScriptCompile Include="terminal.ts" />
     <Content Include="file1.js">
-      <DependentUpon>SceneBuilders.ts</DependentUpon>
+      <DependentUpon>tests.ts</DependentUpon>
     </Content>
     <TypeScriptCompile Include="Game.ts" />
     <TypeScriptCompile Include="extensions.d.ts" />
@@ -66,6 +66,9 @@
     <TypeScriptCompile Include="math.ts" />
     <TypeScriptCompile Include="ObjectBuilders.ts" />
     <TypeScriptCompile Include="SceneBuilders.ts" />
+    <TypeScriptCompile Include="Flag.ts" />
+    <TypeScriptCompile Include="IAnimation.ts" />
+    <TypeScriptCompile Include="tests.ts" />
     <Content Include="file2.js">
       <DependentUpon>Rain.ts</DependentUpon>
     </Content>

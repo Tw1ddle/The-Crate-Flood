@@ -15,7 +15,6 @@ var Main = (function () {
         this.updatestats.domElement.style.left = '960px';
         this.updatestats.domElement.style.top = '0px';
         document.body.appendChild(this.updatestats.domElement);
-        console.log("foo");
         this.animate();
     }
     Main.prototype.render = function (dt) {

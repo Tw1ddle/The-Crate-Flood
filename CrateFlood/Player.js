@@ -35,6 +35,9 @@ var Player = (function (_super) {
         });
         this.currentAnimation = 0;
     }
+    Player.prototype.update = function (dt) {
+        _super.prototype.update.call(this, dt);
+    };
     return Player;
 })(Sprite);
 //@ sourceMappingURL=Player.js.map

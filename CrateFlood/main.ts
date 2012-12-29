@@ -21,6 +21,8 @@ class Main {
         Random.setSeed(Date.now());
 
         //load resources
+        //todo - get rid of all asset loads elsewhere
+        //add callback etc
         //...
 
         //load game
@@ -38,8 +40,6 @@ class Main {
         this.updatestats.domElement.style.left = '960px';
         this.updatestats.domElement.style.top = '0px';
         document.body.appendChild(this.updatestats.domElement);
-
-        console.log("foo");
 
         //go
         this.animate();

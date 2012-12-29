@@ -14,6 +14,7 @@
 ///<reference path='Island.ts'/>
 ///<reference path='Cloud.ts'/>
 ///<reference path='Water.ts'/>
+///<reference path='Crate.ts'/>
 
 class CrateScene extends BaseScene {
     constructor (renderer: THREE.Renderer) {
@@ -55,6 +56,7 @@ class CrateScene extends BaseScene {
         this.scene.add(new Island(new THREE.Vector2(200, 100)));
         this.scene.add(new Island(new THREE.Vector2(290, 60)));
         this.scene.add(new Island(new THREE.Vector2(100, 180)));
+        this.scene.add(new Crate(new THREE.Vector2(60, 120)));
         this.scene.add(new Sprite(400, 19, groundTex, new THREE.Vector3(Config.RENDER_WIDTH / 2, 0, Layer.earthBackground)));
 
         this.scene.add(new Cloud(new THREE.Vector2(-100, Random.nextDoubleRange(200, 225)), new THREE.Vector3(0, 0, 0), 0));
