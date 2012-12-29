@@ -6,7 +6,7 @@ var BaseScene = (function () {
         this.camera.position.set(0, 0, 200);
         if(Debug.GUI_ENABLED) {
             this.debug = new dat.gui.GUI();
-            Debug.addItem(this.debug, this.camera, 'Camera');
+            Debug.addCamera(this.debug, this.camera, 'Camera');
             Debug.addSceneInfo(this.debug, this.scene, 'Scene');
         }
     }

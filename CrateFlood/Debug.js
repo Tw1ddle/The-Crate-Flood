@@ -15,6 +15,14 @@ var Debug;
             return gui.addFolder('Item '.concat('(').concat(uniqueID().concat(')')));
         }
     }
+    function addCamera(gui, camera, tag) {
+        var folder = addItem(gui, camera, tag);
+        folder.add(camera, 'frustumCulled').listen();
+        folder.add(camera, 'near', 0, 1, 0.1).listen();
+        folder.add(camera, 'far', 0, 100, 0.1).listen();
+        return folder;
+    }
+    Debug.addCamera = addCamera;
     function addItem(gui, object, tag) {
         assert(Debug.GUI_ENABLED, "Debug addon called with debugging disabled");
         var folder = getFolder(gui, tag);
@@ -29,20 +37,24 @@ var Debug;
         folder.add(object.scale, 'z', 0, 10, 0.1).listen();
         folder.add(object, 'visible').listen();
         folder.add(object, 'id').listen();
+        return folder;
     }
     Debug.addItem = addItem;
     function addItems(gui, objects, tag) {
+        var folder = getFolder(gui, "Items");
         for(var i = 0; i < objects.length; i++) {
-            addItem(gui, objects[i], tag);
+            addItem(folder, objects[i], tag);
         }
+        return folder;
     }
     Debug.addItems = addItems;
     function addSceneInfo(gui, scene, tag) {
         var folder = getFolder(gui, tag);
         folder.add(scene.children, 'length').listen();
+        return folder;
     }
     Debug.addSceneInfo = addSceneInfo;
-    function addToScene() {
+    function addToScene(scene) {
     }
     Debug.addToScene = addToScene;
 })(Debug || (Debug = {}));

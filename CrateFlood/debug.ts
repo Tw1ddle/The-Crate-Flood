@@ -24,7 +24,11 @@ module Debug {
     }
 
     export function addCamera(gui: any, camera: THREE.OrthographicCamera, tag?: string): dat.gui.GUI {
-        var folder = getFolder(addItem(gui, camera, tag);
+        var folder: dat.gui.GUI = addItem(gui, camera, tag);
+
+        folder.add(camera, 'frustumCulled').listen();
+        folder.add(camera, 'near', 0, 1, 0.1).listen();
+        folder.add(camera, 'far', 0, 100, 0.1).listen();
 
         return folder;
     }
@@ -32,7 +36,7 @@ module Debug {
     export function addItem(gui: any, object: THREE.Object3D, tag?: string): dat.gui.GUI {
         assert(GUI_ENABLED, "Debug addon called with debugging disabled");
 
-        var folder: any = getFolder(gui, tag);
+        var folder: dat.gui.GUI = getFolder(gui, tag);
   
         folder.add(object.position, 'x', -1000.0, 1000.0, 0.1).listen();
         folder.add(object.position, 'y', -1000.0, 1000.0, 0.1).listen();
@@ -52,19 +56,26 @@ module Debug {
         return folder;
     }
 
-    export function addItems(gui: any, objects: THREE.Object3D[], tag?: string): void {
+    export function addItems(gui: any, objects: THREE.Object3D[], tag?: string): dat.gui.GUI {
+        var folder: dat.gui.GUI = getFolder(gui, "Items");
+
         for (var i = 0; i < objects.length; i++) {
-            addItem(gui, objects[i], tag);
+            addItem(folder, objects[i], tag);
         }
+
+        return folder;
     }
 
-    export function addSceneInfo(gui: any, scene: THREE.Scene, tag?: string): void {
-        var folder: any = getFolder(gui, tag);
+    export function addSceneInfo(gui: any, scene: THREE.Scene, tag?: string): dat.gui.GUI {
+        var folder: dat.gui.GUI = getFolder(gui, tag);
 
         folder.add(scene.children, 'length').listen();
+
+        return folder;
     }
 
-    export function addToScene() {
+    export function addToScene(scene: THREE.Scene) {
+        //todo
     }
 
 }
