@@ -1,29 +1,71 @@
 var Debug;
 (function (Debug) {
     Debug.TERMINAL_ENABLED = true;
-    var Command = {
-        Help: "help",
-        Run: "run",
+    var Commands = {
+        Help: {
+            id: "help",
+            description: "lists your options"
+        },
+        Context: {
+            id: "context",
+            description: "returns the current execution context"
+        },
+        Dump: {
+            id: "dump",
+            description: "dumps the supplied object"
+        },
+        Execute: {
+            id: "run",
+            description: "executes the named function living in the window context"
+        }
+    };
+    var CVars = {
+        TogglePaused: "togglepaused",
         RendererInfo: "renderer"
     };
-    var CVar = {
-        TogglePaused: "togglepaused"
+    var Contexts = {
+        Game: "window.main.game",
+        Main: "window.main"
     };
+    var currentContext = Contexts.Game;
     var Terminal = (function () {
         function Terminal() {
-            assert(Debug.TERMINAL_ENABLED, 'terminal initialized with console disabled');
+            assert(Debug.TERMINAL_ENABLED, 'terminal initialized with terminal disabled');
             jQuery(document).ready(function ($) {
-                $('#tilda').tilda(function (command, terminal) {
-                    var keyword = command.split(" ")[0];
-                    if(keyword == Command.Help) {
-                        terminal.echo("Commands: " + Utility.getKeys(Command));
-                        terminal.echo("CVars: " + Utility.getPropertyValuePairs(Command));
+                $('#tilda').tilda(function (input, terminal) {
+                    var args = input.split(" ");
+                    var keyword = args[0];
+                    var options = args.slice(1, args.length);
+                    if(keyword == Commands.Help.id) {
+                        terminal.echo("Commands: \n\n" + Utility.dumpObjectIndented(Commands, " ") + "\n");
+                        terminal.echo("CVars: " + Utility.dumpObjectIndented(CVars, " ") + "\n");
                     } else {
-                        if(keyword == Command.Run) {
-                        } else {
-                            if(keyword == Command.Pause) {
+                        if(keyword == Commands.Context.id) {
+                            if(options[0] != null) {
+                                currentContext = options[0];
+                                terminal.echo("Current context set to: " + currentContext);
                             } else {
-                                if(keyword == Command.Resume) {
+                                terminal.echo("Current context: " + currentContext);
+                            }
+                        } else {
+                            if(keyword == Commands.Execute.id) {
+                                terminal.echo("Executing: " + options[0]);
+                                Utility.executeFunctionByName(options[0], currentContext, options.slice(1, options.length));
+                            } else {
+                                if(keyword == Commands.Dump.id) {
+                                    if(options[0] != null) {
+                                        terminal.echo("Dumping: " + options[0]);
+                                        terminal.echo(Utility.dumpObjectIndented(options[0]));
+                                    } else {
+                                        terminal.echo("No object specified");
+                                    }
+                                } else {
+                                    if(keyword == Commands.RendererInfo.id) {
+                                        terminal.echo("Renderer: \n" + Utility.dumpObjectIndented(Utility.getObjectByName("renderer", Contexts.Game)) + "\n");
+                                    } else {
+                                        terminal.echo("Unrecognized keyword: " + "[" + keyword + "]");
+                                        terminal.echo("Arguments: \n" + Utility.dumpObjectIndented(options) + "\n");
+                                    }
                                 }
                             }
                         }
@@ -31,19 +73,6 @@ var Debug;
                 });
             });
         }
-        Terminal.prototype.executeFunctionByName = function (name, context) {
-            var args = [];
-            for (var _i = 0; _i < (arguments.length - 2); _i++) {
-                args[_i] = arguments[_i + 2];
-            }
-            var args = Array.prototype.slice.call(arguments).splice(2);
-            var namespaces = name.split(".");
-            var func = namespaces.pop();
-            for(var i = 0; i < namespaces.length; i++) {
-                context = context[namespaces[i]];
-            }
-            return context[func].apply(this, args);
-        };
         return Terminal;
     })();
     Debug.Terminal = Terminal;    

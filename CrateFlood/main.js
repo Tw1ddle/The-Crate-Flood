@@ -15,6 +15,7 @@ var Main = (function () {
         this.updatestats.domElement.style.left = '960px';
         this.updatestats.domElement.style.top = '0px';
         document.body.appendChild(this.updatestats.domElement);
+        console.log("foo");
         this.animate();
     }
     Main.prototype.render = function (dt) {
@@ -42,14 +43,12 @@ var Main = (function () {
 window.onload = function () {
     if(Debug.TERMINAL_ENABLED) {
         var terminal = new Debug.Terminal();
-        terminal.write("here is some text");
-        window['log'] = function (msg) {
-            if(typeof console != 'undefined' && typeof console.log != 'undefined') {
+        if(window.console) {
+            console.terminal = function (msg) {
                 console.log(msg);
-                terminal.write(msg);
-            }
-        };
+            };
+        }
     }
     window["main"] = new Main();
 };
-//@ sourceMappingURL=app.js.map
+//@ sourceMappingURL=main.js.map

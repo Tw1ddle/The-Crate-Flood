@@ -15,6 +15,15 @@ var CrateFlood = (function () {
         this.gamescene = new CrateScene(this.renderer);
         this.pausescene = new PauseScene(this.renderer);
     }
+    CrateFlood.prototype.foo = function () {
+        console.info("blah");
+    };
+    CrateFlood.prototype.bar = function (num) {
+        console.info(num);
+    };
+    CrateFlood.prototype.baz = function (obj) {
+        console.info(obj.toString());
+    };
     CrateFlood.prototype.render = function (dt) {
         if(!this.started) {
             this.startscreenscene.render(dt);
@@ -39,6 +48,16 @@ var CrateFlood = (function () {
     CrateFlood.prototype.reset = function () {
         this.paused = false;
         this.started = false;
+    };
+    CrateFlood.prototype.onContextRightClick = function (event) {
+        if(event.button === 2) {
+            event.preventDefault();
+        }
+    };
+    CrateFlood.prototype.onCanvasMouseMove = function (event) {
+        event.preventDefault();
+    };
+    CrateFlood.prototype.resize = function (event) {
     };
     return CrateFlood;
 })();

@@ -52,6 +52,19 @@ class CrateFlood implements IGame {
         this.pausescene = new PauseScene(this.renderer);
     }
 
+    public foo(): void {
+        console.info("blah");
+    }
+
+    public bar(num: number): void {
+        console.info(num);
+    }
+
+    public baz(obj: Object): void {
+        console.info(obj.toString());
+    }
+
+
     private render(dt: number) {
 
         if (!this.started) {

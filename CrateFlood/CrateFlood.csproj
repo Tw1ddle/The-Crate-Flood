@@ -28,12 +28,12 @@
     <Content Include="CrateScene.ts" />
     <Content Include="default.htm" />
     <Content Include="app.js">
-      <DependentUpon>app.ts</DependentUpon>
+      <DependentUpon>main.ts</DependentUpon>
     </Content>
     <Content Include="assets.ts" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="app.ts" />
+    <TypeScriptCompile Include="main.ts" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="stats.d.ts" />
@@ -57,9 +57,10 @@
     <TypeScriptCompile Include="pxloader.d.ts" />
     <TypeScriptCompile Include="terminal.ts" />
     <Content Include="file1.js">
-      <DependentUpon>CrateFlood.ts</DependentUpon>
+      <DependentUpon>extensions.d.ts</DependentUpon>
     </Content>
     <TypeScriptCompile Include="CrateFlood.ts" />
+    <TypeScriptCompile Include="extensions.d.ts" />
     <Content Include="file2.js">
       <DependentUpon>Rain.ts</DependentUpon>
     </Content>
@@ -72,6 +73,7 @@
     <Content Include="sparks.d.ts" />
     <Content Include="StartScreenScene.ts" />
     <Content Include="three.d.ts" />
+    <Content Include="tween.js-r7.d.ts" />
     <Content Include="Water.ts" />
     <Content Include="web.config" />
     <None Include="web.Debug.config">

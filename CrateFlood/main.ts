@@ -1,6 +1,7 @@
 ///<reference path='three.d.ts'/>
 ///<reference path='jquery-1.8.d.ts'/>
 ///<reference path='stats.d.ts'/>
+///<reference path='extensions.d.ts'/>
 
 ///<reference path='assert.ts'/>
 
@@ -16,7 +17,6 @@
 ///<reference path='CrateFlood.ts'/>
 
 class Main {
-    private gui: dat.gui.GUI;
     private renderstats: Stats = new Stats();
     private updatestats: Stats = new Stats();
 
@@ -40,6 +40,8 @@ class Main {
         this.updatestats.domElement.style.left = '960px';
         this.updatestats.domElement.style.top = '0px';
         document.body.appendChild(this.updatestats.domElement);
+
+        console.log("foo");
 
         //go
         this.animate();
@@ -76,9 +78,17 @@ class Main {
 
 window.onload = () => {
 
-    if (Debug.TERMINAL_ENABLED) {
+    if (Debug.TERMINAL_ENABLED) { 
         var terminal: Debug.Terminal = new Debug.Terminal();
+
+        // override the browser console and direct stuff to the terminal
+        if (window.console) {
+            console.terminal = function (msg: any) : void {
+                console.log(msg);
+                //terminal.write(msg);
+            }
+        }
     }
     
-    var main: Main = new Main();
+    window["main"] = new Main(); //add Main to the window context so the terminal can get at it
 };

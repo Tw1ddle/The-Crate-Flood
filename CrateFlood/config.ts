@@ -4,5 +4,4 @@ module Config {
 
     export var RENDER_WIDTH: number = 400;
     export var RENDER_HEIGHT: number = 250;
-
 }
