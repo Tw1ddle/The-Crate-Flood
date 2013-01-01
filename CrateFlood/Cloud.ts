@@ -41,13 +41,14 @@ class Cloud extends Sprite {
             texture = THREE.ImageUtils.loadTexture(Assets.Image.cloud3);
         }
 
-        super(size.x, size.y, texture, new THREE.Vector3(position.x, position.y, layer));
+        super(size.x, size.y, texture, new THREE.Vector3(position.x, position.y, layer), new THREE.Vector2(0, 0));
 
         this.velocity.x = Random.nextDoubleRange(20, 50);
+        this.scroll = new THREE.Vector2(1, 0.85);
     }
 
-    public update(dt: number): void {
-        super.update(dt);
+    public update(dt: number, scrollPoint: THREE.Vector2): void {
+        super.update(dt, scrollPoint);
 
         if (this.position.x - this.width/2 > Config.RENDER_WIDTH) {
             this.position.x = -this.width / 2;

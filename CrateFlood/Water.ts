@@ -27,15 +27,14 @@ class Water extends Sprite {
         texture.needsUpdate = true;
 
         //add textures
-
         
 
-        super(size.x, size.y, texture, new THREE.Vector3(position.x, position.y, layer));
+        super(size.x, size.y, texture, new THREE.Vector3(position.x, position.y, layer), new THREE.Vector2(1, 1));
         this.material.overdraw = false; //override overdraw
     }
 
-    public update(dt: number) {
-        super.update(dt);
+    public update(dt: number, scrollPoint: THREE.Vector2) {
+        super.update(dt, scrollPoint);
 
         this.position.y += this.risingRate * dt;
     }

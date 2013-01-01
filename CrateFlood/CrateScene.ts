@@ -31,8 +31,8 @@ class CrateScene extends BaseScene {
 
         var starsTex = THREE.ImageUtils.loadTexture(Assets.Image.stars);
 
-		var moon = new Sprite(77, 75, moontex, new THREE.Vector3(260, 170, Layer.moon));
-		var stars = new Sprite(Config.RENDER_WIDTH, Config.RENDER_HEIGHT, starsTex, new THREE.Vector3(Config.RENDER_WIDTH / 2, Config.RENDER_HEIGHT / 2, Layer.stars));
+		var moon = new Sprite(77, 75, moontex, new THREE.Vector3(260, 170, Layer.moon), new THREE.Vector2(1.0, 0.9));
+		var stars = new Sprite(Config.RENDER_WIDTH, Config.RENDER_HEIGHT, starsTex, new THREE.Vector3(Config.RENDER_WIDTH / 2, Config.RENDER_HEIGHT / 2, Layer.stars), new THREE.Vector2(1, 0.95));
 		
 		
 
@@ -43,28 +43,28 @@ class CrateScene extends BaseScene {
         var hilltree2 = new Tree(new THREE.Vector2(103, 110), new THREE.Vector3(0, 0, Math.PI/3), 2);
 
 		this.scene.add(moon);
-		this.scene.add(new Sprite(146, 60, hill1, new THREE.Vector3(270, 30, Layer.hill1)));
-		this.scene.add(new Sprite(208, 89, hill2, new THREE.Vector3(139, 44, Layer.hill2)));
-		//this.scene.add(hilltree0);
-        //this.scene.add(hilltree1);
-        //this.scene.add(hilltree2);
+		this.scene.add(new Sprite(146, 60, hill1, new THREE.Vector3(270, 30, Layer.hill1), new THREE.Vector2(1, 1)));
+		this.scene.add(new Sprite(208, 89, hill2, new THREE.Vector3(139, 44, Layer.hill2), new THREE.Vector2(1, 1)));
+		this.scene.add(hilltree0);
+        this.scene.add(hilltree1);
+        this.scene.add(hilltree2);
         //this.scene.add(player);
-        //this.scene.add(new Lightning(new THREE.Vector2(Config.RENDER_WIDTH/2, Config.RENDER_HEIGHT/2)));
+        this.scene.add(new Lightning(new THREE.Vector2(Config.RENDER_WIDTH/2, Config.RENDER_HEIGHT/2)));
        // this.scene.add(new Lightning(new THREE.Vector2(Config.RENDER_WIDTH/2, Config.RENDER_HEIGHT/2)));
-        this.scene.add(new Sprite(400, 250, backgroundGradientTex, new THREE.Vector3(Config.RENDER_WIDTH/2, Config.RENDER_HEIGHT/2, Layer.back)));
+        this.scene.add(new Sprite(400, 250, backgroundGradientTex, new THREE.Vector3(Config.RENDER_WIDTH/2, Config.RENDER_HEIGHT/2, Layer.back), new THREE.Vector2(1, 1)));
         this.scene.add(stars);
         this.scene.add(new Island(new THREE.Vector2(50, 120)));
         this.scene.add(new Island(new THREE.Vector2(200, 100)));
         this.scene.add(new Island(new THREE.Vector2(290, 60)));
         this.scene.add(new Island(new THREE.Vector2(100, 180)));
         this.scene.add(new Crate(new THREE.Vector2(102, 195)));
-        this.scene.add(new Sprite(400, 19, groundTex, new THREE.Vector3(Config.RENDER_WIDTH / 2, 0, Layer.earthBackground)));
+        this.scene.add(new Sprite(400, 19, groundTex, new THREE.Vector3(Config.RENDER_WIDTH / 2, 0, Layer.earthBackground), new THREE.Vector2(1, 1)));
 
         this.scene.add(new Cloud(new THREE.Vector2(-100, Random.nextDoubleRange(200, 225)), new THREE.Vector3(0, 0, 0), 0));
         this.scene.add(new Cloud(new THREE.Vector2(-100, Random.nextDoubleRange(150, 200)), new THREE.Vector3(0, 0, 0), 1));
         this.scene.add(new Cloud(new THREE.Vector2(-100, Random.nextDoubleRange(50, 100)), new THREE.Vector3(0, 0, 0), 2));
 
-        this.scene.add(new Water(new THREE.Vector2(Config.RENDER_WIDTH/2, -Config.RENDER_HEIGHT/2)));
+        this.scene.add(new Water(new THREE.Vector2(Config.RENDER_WIDTH/2, -Config.RENDER_HEIGHT)));
 
         this.scene.add(new TextItem(new THREE.Vector3(46, 227, Layer.front), 200, 12, "12px Helvetica", "white", "GENESIS 6:17"));
         this.scene.add(new TextItem(new THREE.Vector3(194, 191, Layer.front), 350, 12, "12px Helvetica", "white", "I am going to bring floodwaters on the earth to destroy all life under the heavens..."));

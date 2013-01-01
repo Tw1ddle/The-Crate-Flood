@@ -25,7 +25,7 @@ class Crate extends Sprite {
         super(size.x, size.y, texture, new THREE.Vector3(position.x, position.y, layer));
     }
 
-    public update(dt: number): void {
-        super.update(dt);
+    public update(dt: number, scrollPoint: THREE.Vector2): void {
+        super.update(dt, scrollPoint);
     }
 }

@@ -9,7 +9,7 @@ module Animations {
 }
 
 class Sprite extends THREE.Mesh implements IMoveable {
-    constructor (public width: number, public height: number, public texture?: THREE.Texture, position?: THREE.Vector3, tileLayout?: THREE.Vector3) {
+    constructor (public width: number, public height: number, public texture?: THREE.Texture, position?: THREE.Vector3, scroll?: THREE.Vector2, tileLayout?: THREE.Vector3) {
         super(new THREE.PlaneGeometry(width, height), new THREE.MeshBasicMaterial({ map: texture, overdraw: true }));
 
         (<any>(this)).doubleSided = true;
@@ -20,16 +20,22 @@ class Sprite extends THREE.Mesh implements IMoveable {
             this.position = new THREE.Vector3(0, 0, 0);
         }
 
-        if (!tileLayout) {
+        if (tileLayout == null) {
             this.tileLayout = new THREE.Vector3(1, 1, 1);
         } else {
             this.tileLayout = tileLayout;
         }
 
+        if (scroll == null) {
+            this.scroll = new THREE.Vector2(0, 0);
+        } else {
+            this.scroll = scroll;
+        }
+
         assert(texture != null, 'Sprite with null texture constructed');
     }
 
-    public update(dt: number) {
+    public update(dt: number, scrollPoint: THREE.Vector2) {
         if (this.anims.length != 0) {
             this.animationTimeAccumulator += dt;
 
@@ -40,8 +46,9 @@ class Sprite extends THREE.Mesh implements IMoveable {
         }
 
         // pixels per second
-        this.position.x += this.velocity.x * dt;
-        this.position.y += this.velocity.y * dt;
+        this.position.x += this.velocity.x * dt + (scrollPoint.x * this.scroll.x);
+        this.position.y += this.velocity.y * dt + (scrollPoint.y * this.scroll.y);
+
     }
 
     private setTile() {
@@ -75,4 +82,6 @@ class Sprite extends THREE.Mesh implements IMoveable {
 
     public currentAnimation: number;
     public anims: { frames: number[]; times: number[]; }[] = new Array();
+
+    public scroll: THREE.Vector2;
 }

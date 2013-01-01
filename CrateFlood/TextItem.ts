@@ -11,6 +11,7 @@ class TextItem extends Sprite {
         var context = canvas.getContext('2d');
         context.textAlign = 'start';
         context.textBaseline = 'top';
+        context.font = font;
 
         var textDimensions: THREE.Vector2 = this.multiFillText(context, text, new THREE.Vector2(0, 0), maxWidth, lineheight, false);
 

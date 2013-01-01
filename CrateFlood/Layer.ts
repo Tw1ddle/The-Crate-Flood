@@ -1,4 +1,6 @@
 module Layer {
+    // Rendering back-->front z-order
+
     export var back: number = -50;
 
     export var stars: number = -48;

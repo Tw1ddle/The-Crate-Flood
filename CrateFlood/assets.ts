@@ -38,6 +38,7 @@ module Assets {
         export var player1: string = '/assets/player1.png';
         export var explosion: string = '/assets/explosion.png';
         export var splash: string = '/assets/splash.png';
+        export var flag1: string = '/assets/flag.png';
     }
 
     export module Sound {

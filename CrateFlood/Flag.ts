@@ -1,25 +1,24 @@
-// Interface
-interface IPoint {
-    getDist(): number;
+///<reference path='Sprite.ts'/>
+
+///<reference path='Assets.ts'/>
+
+module Animations {
+    export var waveunactivated: { frames: number[]; times: number[]; } = { frames: [0], times: [0] };
+    export var waveactivated: { frames: number[]; times: number[]; } = { frames: [0], times: [0] };
 }
 
-// Module
-module Shapes {
+class Flag extends Sprite {
+    constructor (position: THREE.Vector3) {
+        var texture = THREE.ImageUtils.loadTexture(Assets.Sprite.flag1);
 
-    // Class
-    export class Point implements IPoint {
-        // Constructor
-        constructor (public x: number, public y: number) { }
+        super(28, 28, texture, position, new THREE.Vector2(1, 1), new THREE.Vector3(4, 2, 8));
+        
+        this.anims.push({ frames: [4, 5, 6, 7], times: [2, 2, 2, 2] });
 
-        // Instance member
-        getDist() { return Math.sqrt(this.x * this.x + this.y * this.y); }
-
-        // Static member
-        static origin = new Point(0, 0);
+        this.currentAnimation = 0;
     }
 
+    public update(dt: number, scrollPoint: THREE.Vector2): void {
+        super.update(dt, scrollPoint);
+    }
 }
-
-// Local variables
-var p: IPoint = new Shapes.Point(3, 4);
-var dist = p.getDist();

@@ -12,16 +12,18 @@ class Lightning extends Sprite {
         var texture: THREE.Texture = new THREE.Texture(Utility.generateImage(Config.RENDER_WIDTH, Config.RENDER_HEIGHT, "#FFFFFF", 0.23));
         texture.needsUpdate = true;
 
-        super(Config.RENDER_WIDTH, Config.RENDER_HEIGHT, texture, new THREE.Vector3(position.x, position.y, Layer.lightning));
+        super(Config.RENDER_WIDTH, Config.RENDER_HEIGHT, texture, new THREE.Vector3(position.x, position.y, Layer.lightning), new THREE.Vector2(1, 1));
 
         this.cumulativeTime = 0;
         this.flashDuration = 0.10;
         this.frequency = 4.00;
         this.visible = false;
+
+        this.material.overdraw = false;
     }
 
-    public update(dt: number) {
-        super.update(dt);
+    public update(dt: number, scrollPoint: THREE.Vector2) {
+        super.update(dt, scrollPoint);
 
         this.cumulativeTime += dt;
 
