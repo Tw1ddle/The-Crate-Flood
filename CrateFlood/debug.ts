@@ -3,6 +3,8 @@
 ///<reference path='assert.ts'/>
 
 module Debug {
+    export var DRAW_SPRITEBOXES_ENABLED: bool = true;
+
     export var GUI_ENABLED: bool = true;
 
     //synchronous
@@ -27,6 +29,12 @@ module Debug {
         var folder: dat.gui.GUI = addItem(gui, camera, tag);
 
         folder.add(camera, 'frustumCulled').listen();
+
+        return folder;
+    }
+
+    export function addText(gui: any, textitem: TextItem, tag?: string): dat.gui.GUI {
+        var folder: dat.gui.GUI = addItem(gui, textitem, tag);
 
         return folder;
     }
