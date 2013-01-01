@@ -3,27 +3,19 @@
 ///<reference path='Sprite.ts'/>
 
 class TextItem extends Sprite {
-    constructor (position: THREE.Vector3, canvassize: THREE.Vector2, text: string, lineheight?: number, font?: string,  colour?: any) {
+    constructor (position: THREE.Vector3, maxWidth: number, lineheight: number, font: string, colour: string, text: string) {
         this.position = position;
 
         var canvas : any = document.createElement('canvas');
-
-        canvas.width = canvassize.x;
-        canvas.height = canvassize.y;
 
         var context = canvas.getContext('2d');
         context.textAlign = 'start';
         context.textBaseline = 'top';
 
-        if (lineheight == null) {
-            lineheight = 14;
-        }
+        var textDimensions: THREE.Vector2 = this.multiFillText(context, text, new THREE.Vector2(0, 0), maxWidth, lineheight, false);
 
-        if (font == null) {
-            context.font = "12px Arial";
-        } else {
-            context.font = font;
-        }
+        canvas.width = textDimensions.x;
+        canvas.height = textDimensions.y;
         
         if (colour == null) {
             context.fillStyle = "white";
@@ -31,13 +23,18 @@ class TextItem extends Sprite {
             context.fillStyle = colour;
         }
 
-        this.multiFillText(context, text, new THREE.Vector2(0, 0), canvassize.x, lineheight, true);
+        this.multiFillText(context, text, new THREE.Vector2(0, 0), maxWidth, lineheight, true);
 
         var texture : THREE.Texture = new THREE.Texture(canvas);
         texture.needsUpdate = true;
 
-        super(canvassize.x, canvassize.y, texture, position);
+        super(textDimensions.x, textDimensions.y, texture, position);
         this.material.overdraw = false; // override overdraw
+
+        if (Debug.DRAW_SPRITEBOXES_ENABLED) {
+            context.strokeRect(0, 0, canvas.width, canvas.height);
+        }
+        
     }
 
     // http://jsfiddle.net/jeffchan/WHgaY/76/
@@ -45,12 +42,14 @@ class TextItem extends Sprite {
         text = text.replace(/(\r\n|\n\r|\r|\n)/g, "\n");
         var sections = text.split("\n");
 
-        var i, str, wordWidth, words, currentLine = 0,
+        var i, str, wordWidth, words, currentLine = 1,
             maxHeight = 0,
             maxWidth = 0;
 
         var printNextLine = function(str) {
+            if (draw == true) {
                 context.fillText(str, startPosition.x, startPosition.y + (lineHeight * currentLine));
+            }
 
             currentLine++;
             wordWidth = context.measureText(str).width;
@@ -95,10 +94,6 @@ class TextItem extends Sprite {
         }
 
         maxHeight = lineHeight * (currentLine);
-
-        if (Debug.DRAW_SPRITEBOXES_ENABLED) {
-            context.strokeRect(startPosition.x, startPosition.y, maxWidth, maxHeight);
-        }
 
         return new THREE.Vector2(maxWidth, maxHeight);
     }

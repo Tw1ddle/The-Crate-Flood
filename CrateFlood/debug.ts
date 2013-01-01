@@ -3,7 +3,7 @@
 ///<reference path='assert.ts'/>
 
 module Debug {
-    export var DRAW_SPRITEBOXES_ENABLED: bool = true;
+    export var DRAW_SPRITEBOXES_ENABLED: bool = false;
 
     export var GUI_ENABLED: bool = true;
 

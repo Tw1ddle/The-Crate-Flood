@@ -66,7 +66,10 @@ class CrateScene extends BaseScene {
 
         this.scene.add(new Water(new THREE.Vector2(Config.RENDER_WIDTH/2, -Config.RENDER_HEIGHT/2)));
 
-        this.scene.add(new TextItem(new THREE.Vector3(0, 0, Layer.front), new THREE.Vector2(200, 100), "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...", 14, "12px Helvetica"));
+        this.scene.add(new TextItem(new THREE.Vector3(46, 227, Layer.front), 200, 12, "12px Helvetica", "white", "GENESIS 6:17"));
+        this.scene.add(new TextItem(new THREE.Vector3(194, 191, Layer.front), 350, 12, "12px Helvetica", "white", "I am going to bring floodwaters on the earth to destroy all life under the heavens..."));
+        this.scene.add(new TextItem(new THREE.Vector3(178, 160, Layer.front), 350, 12, "12px Helvetica", "white", "...every creature that has the breath of life in it."));
+        this.scene.add(new TextItem(new THREE.Vector3(171, 130, Layer.front), 350, 12, "12px Helvetica", "white", "Everything on earth will perish."));
 
         this.scene.add(new Rain(new THREE.Vector2(200, 100)));
 

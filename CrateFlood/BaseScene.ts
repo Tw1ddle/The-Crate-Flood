@@ -1,5 +1,5 @@
 ///<reference path='IScene.ts'/>
-///<reference path='Debug.ts'/>
+///<reference path='debug.ts'/>
 
 ///<reference path='Utility.ts'/>
 
