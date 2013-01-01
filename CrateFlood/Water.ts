@@ -31,6 +31,7 @@ class Water extends Sprite {
         
 
         super(size.x, size.y, texture, new THREE.Vector3(position.x, position.y, layer));
+        this.material.overdraw = false; //override overdraw
     }
 
     public update(dt: number) {

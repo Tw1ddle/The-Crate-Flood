@@ -37,6 +37,7 @@ class TextItem extends Sprite {
         texture.needsUpdate = true;
 
         super(canvassize.x, canvassize.y, texture, position);
+        this.material.overdraw = false; // override overdraw
     }
 
     // http://jsfiddle.net/jeffchan/WHgaY/76/
