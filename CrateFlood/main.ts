@@ -1,5 +1,5 @@
-///<reference path='stats.d.ts'/>
-///<reference path='tween.js-r7.d.ts'/>
+///<reference path='tslib/stats.d.ts'/>
+///<reference path='tslib/tween.js-r7.d.ts'/>
 
 ///<reference path='assert.ts'/>
 

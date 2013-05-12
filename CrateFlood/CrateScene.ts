@@ -1,5 +1,5 @@
-///<reference path='three.d.ts'/>
-///<reference path='dat.gui.d.ts'/>
+///<reference path='tslib/three.d.ts'/>
+///<reference path='tslib/dat.gui.d.ts'/>
 
 ///<reference path='assets.ts'/>
 ///<reference path='Layer.ts'/>
@@ -71,7 +71,8 @@ class CrateScene extends BaseScene {
         this.scene.add(new TextItem(new THREE.Vector3(178, 160, Layer.front), 350, 12, "12px Helvetica", "white", "...every creature that has the breath of life in it."));
         this.scene.add(new TextItem(new THREE.Vector3(171, 130, Layer.front), 350, 12, "12px Helvetica", "white", "Everything on earth will perish."));
 
-        this.scene.add(new Rain(new THREE.Vector2(200, 100)));
+        // Warning, broken
+        //this.scene.add(new Rain(new THREE.Vector2(200, 100)));
 
 		if (Debug.GUI_ENABLED) {
 		    Debug.addItems(this.debug, this.scene.children);

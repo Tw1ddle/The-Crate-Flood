@@ -1,5 +1,5 @@
-///<reference path='three.d.ts'/>
-///<reference path='dat.gui.d.ts'/>
+///<reference path='tslib/three.d.ts'/>
+///<reference path='tslib/dat.gui.d.ts'/>
 ///<reference path='assert.ts'/>
 
 module Debug {

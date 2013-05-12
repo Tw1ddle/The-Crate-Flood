@@ -3,7 +3,7 @@
 
 ///<reference path='Utility.ts'/>
 
-///<reference path='dat.gui.d.ts'/>
+///<reference path='tslib/dat.gui.d.ts'/>
 
 class BaseScene implements IScene {
     constructor (private renderer: THREE.Renderer) {

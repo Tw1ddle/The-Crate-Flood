@@ -1,4 +1,4 @@
-///<reference path='three.d.ts'/>
+///<reference path='tslib/three.d.ts'/>
 
 interface IScene {
     render(dt: number) : void;

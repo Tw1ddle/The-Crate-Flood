@@ -1,4 +1,4 @@
-///<reference path='three.d.ts'/>
+///<reference path='tslib/three.d.ts'/>
 
 module Utility {
     export function isFunction(x: any) : bool {

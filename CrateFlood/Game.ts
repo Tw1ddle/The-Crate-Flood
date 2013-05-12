@@ -1,8 +1,8 @@
 ///<reference path='IGame.ts'/>
 
-///<reference path='three.d.ts'/>
-///<reference path='jquery-1.8.d.ts'/>
-///<reference path='stats.d.ts'/>
+///<reference path='tslib/three.d.ts'/>
+///<reference path='tslib/jquery-1.8.d.ts'/>
+///<reference path='tslib/stats.d.ts'/>
 
 ///<reference path='assert.ts'/>
 

@@ -16,22 +16,33 @@
     <IISExpressUseClassicPipelineMode />
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="app.css" />
     <Content Include="assert.ts" />
     <Content Include="BaseScene.ts" />
     <Content Include="Crate.ts" />
     <Content Include="CrateScene.ts" />
-    <Content Include="default.htm" />
     <Content Include="app.js">
       <DependentUpon>main.ts</DependentUpon>
     </Content>
     <Content Include="assets.ts" />
+    <Content Include="tslib\dat.gui.d.ts" />
+    <Content Include="tslib\extensions.d.ts" />
+    <Content Include="tslib\jquery-1.8.d.ts" />
+    <Content Include="tslib\pxloader.d.ts" />
+    <Content Include="tslib\soundmanager.d.ts" />
+    <Content Include="tslib\Sparks.d.ts" />
+    <Content Include="tslib\stats.d.ts" />
+    <Content Include="tslib\three.d.ts" />
+    <Content Include="tslib\tween.d.ts" />
+    <Content Include="tslib\tween.js-r7.d.ts" />
+    <Content Include="www\config.xml" />
+    <Content Include="www\css\app.css" />
+    <Content Include="www\css\jquery.terminal.css" />
+    <Content Include="www\index.html" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="main.ts" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="stats.d.ts" />
     <TypeScriptCompile Include="IScene.ts" />
     <TypeScriptCompile Include="config.ts" />
     <TypeScriptCompile Include="LoaderScene.ts" />
@@ -43,16 +54,12 @@
     <TypeScriptCompile Include="Explosion.ts" />
     <TypeScriptCompile Include="Rain.ts" />
     <TypeScriptCompile Include="Layer.ts" />
-    <TypeScriptCompile Include="dat.gui.d.ts" />
     <TypeScriptCompile Include="Sprite.ts" />
     <TypeScriptCompile Include="debug.ts" />
     <TypeScriptCompile Include="utility.ts" />
     <TypeScriptCompile Include="random.ts" />
-    <TypeScriptCompile Include="tween.d.ts" />
-    <TypeScriptCompile Include="pxloader.d.ts" />
     <TypeScriptCompile Include="terminal.ts" />
     <TypeScriptCompile Include="Game.ts" />
-    <TypeScriptCompile Include="extensions.d.ts" />
     <TypeScriptCompile Include="TextItem.ts" />
     <TypeScriptCompile Include="IMoveable.ts" />
     <TypeScriptCompile Include="math.ts" />
@@ -64,14 +71,9 @@
       <DependentUpon>Rain.ts</DependentUpon>
     </Content>
     <Content Include="IGame.ts" />
-    <Content Include="jquery-1.8.d.ts" />
     <Content Include="Lightning.ts" />
     <Content Include="PauseScene.ts" />
-    <Content Include="soundmanager.d.ts" />
-    <Content Include="sparks.d.ts" />
     <Content Include="StartScreenScene.ts" />
-    <Content Include="three.d.ts" />
-    <Content Include="tween.js-r7.d.ts" />
     <Content Include="Water.ts" />
     <Content Include="web.config" />
     <None Include="web.Debug.config">
@@ -82,12 +84,16 @@
       <DependentUpon>web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <PropertyGroup>
     <RootNamespace>CrateFlood</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
@@ -98,7 +104,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>60517</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:36221/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
@@ -127,4 +133,7 @@
   <Import Project="$(VSToolsPath)\TypeScript\Microsoft.TypeScript.targets" />
   <Target Name="BeforeBuild">
   </Target>
+  <PropertyGroup>
+    <PostBuildEvent>MOVE /Y "$(ProjectDir)*.js" "$(ProjectDir)www\js"</PostBuildEvent>
+  </PropertyGroup>
 </Project>

@@ -1,5 +1,7 @@
 ///<reference path='Layer.ts'/>
 
+
+// Warning, this isn't working yet ;)
 declare var SPARKS: any; //https://github.com/jeromeetienne/sparkseditor
 
 var initColorSize	= function(){

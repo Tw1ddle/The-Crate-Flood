@@ -1,4 +1,4 @@
-///<reference path='Three.d.ts'/>
+///<reference path='tslib/three.d.ts'/>
 
 ///<reference path='Sprite.ts'/>
 ///<reference path='Random.ts'/>
