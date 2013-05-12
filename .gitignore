@@ -1,5 +1,3 @@
 *.map
 obj/
 bin/
-*.js
-!lib/*.js

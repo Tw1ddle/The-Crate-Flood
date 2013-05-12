@@ -5,7 +5,7 @@
 module Debug {
     export var DRAW_SPRITEBOXES_ENABLED: bool = false;
 
-    export var GUI_ENABLED: bool = true;
+    export var GUI_ENABLED: bool = false;
 
     //synchronous
     var uniqueID = (function () {
