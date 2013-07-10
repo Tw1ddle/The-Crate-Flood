@@ -5,4 +5,4 @@ Partial implementation of The Crate Flood in TypeScript and Canvas. This was ori
 
 This version is written in TypeScript using three.d.ts, three.js and several other JavaScript libraries.
 
-Artwork is copyright Joe Williamson.
+Artwork is copyright Joe Williamson: https://twitter.com/JoeCreates
