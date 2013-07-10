@@ -10,7 +10,7 @@ function assert(expression, msg) {
 var Debug;
 (function (Debug) {
     Debug.DRAW_SPRITEBOXES_ENABLED = false;
-    Debug.GUI_ENABLED = false;
+    Debug.GUI_ENABLED = true;
     var uniqueID = (function () {
         var id = 0;
         return function () {
