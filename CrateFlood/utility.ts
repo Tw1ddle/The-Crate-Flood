@@ -1,7 +1,7 @@
 ///<reference path='tslib/three.d.ts'/>
 
 module Utility {
-    export function isFunction(x: any) : bool {
+    export function isFunction(x: any) : boolean {
         return Object.prototype.toString.call(x) == '[object Function]';
     }
 
@@ -37,7 +37,7 @@ module Utility {
 
     //non-recursive??
     export function getValues(object: Object): string[] {
-        var values: string[] = new string[];
+        var values: string[] = new Array<string>();
         
         for (var key in object) {
             values.push("[" + object[key] + "]");
@@ -48,7 +48,7 @@ module Utility {
 
     //non-recursive??
     export function getPropertyValuePairs(object: Object): string[] {
-        var pairs: string[] = new string[];
+        var pairs: string[] = new Array<string>();
 
         for (var key in object) {
             pairs.push("\n\n" + key + "=" + object[key]);
@@ -70,7 +70,7 @@ module Utility {
 
     //recursive
     //http://stackoverflow.com/questions/130404/javascript-data-formatting-pretty-printer
-    export function dumpObjectIndented(obj: any, indent?: string = " ")
+    export function dumpObjectIndented(obj: any, indent: string = " ")
     {
       var result = "";
       if (indent == null) indent = "";

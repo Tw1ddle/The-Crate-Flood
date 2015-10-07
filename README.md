@@ -1,8 +1,11 @@
-The-Crate-Flood
-===============
+# The Crate Flood
 
-Partial implementation of The Crate Flood in TypeScript and Canvas. This was originally a Flash game written for the 24-hour Nottingham DevSoc Uni Jam 2012. 
+Partial implementation of The Crate Flood jam game in TypeScript. This was originally a Flash game written for the Nottingham DevSoc Uni Jam 2012. 
 
-This version is written in TypeScript using three.d.ts, three.js and several other JavaScript libraries.
+## Screenshots
 
-Artwork is copyright Joe Williamson: https://twitter.com/JoeCreates
+![Screenshot1](https://github.com/Tw1ddle/The-Crate-Flood/blob/master/screenshots/screenshot1.png?raw=true "Screenshot 1")
+
+## Credits
+* The original game was created by Tom Rosling, Sam Twidale and Joe Williamson.
+* This implementation is written using three.js, dat.gui, tween.js and other libraries, and relies on TypeScript definitions from DefinitelyTyped.

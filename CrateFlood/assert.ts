@@ -1,5 +1,5 @@
 /* C-style assertions */
-function assert(expression : bool, msg?: string) : void {  
+function assert(expression : boolean, msg?: string) : void {  
    if (!expression) {  
       if (msg == null) {
          window.alert("Assertion failed.");

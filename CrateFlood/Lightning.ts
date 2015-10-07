@@ -19,7 +19,7 @@ class Lightning extends Sprite {
         this.frequency = 4.00;
         this.visible = false;
 
-        this.material.overdraw = false;
+        this.material.overdraw = 0;
     }
 
     public update(dt: number, scrollPoint: THREE.Vector2) {

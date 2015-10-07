@@ -1,5 +1,4 @@
 ///<reference path='tslib/stats.d.ts'/>
-///<reference path='tslib/tween.js-r7.d.ts'/>
 
 ///<reference path='assert.ts'/>
 
@@ -47,7 +46,7 @@ class Main {
         this.animate();
     }
 
-    private render(dt: number) {
+    public render(dt: number) {
         this.renderstats.begin();
 
         this.game.render(dt);
@@ -55,7 +54,7 @@ class Main {
         this.renderstats.end();
     }
 
-    private update(dt: number) {
+    public update(dt: number) {
         this.updatestats.begin();
 
         this.game.update(dt);
@@ -63,10 +62,16 @@ class Main {
         this.updatestats.end();
     }
 
+    public pause() {
+    }
+
+    public resume() {
+    }
+
     private animate() : void {
         var _this = this;
-    
-        var _cb = function () { 
+
+        var _cb = function (p: any) { 
             var dt: number = _this.clock.getDelta(); // seconds
             _this.update(dt);
             _this.render(dt);

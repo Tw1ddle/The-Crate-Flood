@@ -3,9 +3,9 @@
 ///<reference path='assert.ts'/>
 
 module Debug {
-    export var DRAW_SPRITEBOXES_ENABLED: bool = false;
+    export var DRAW_SPRITEBOXES_ENABLED: boolean = false;
 
-    export var GUI_ENABLED: bool = true;
+    export var GUI_ENABLED: boolean = true;
 
     //synchronous
     var uniqueID = (function () {

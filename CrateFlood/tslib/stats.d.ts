@@ -1,4 +1,4 @@
-class Stats {
+declare class Stats {
     constructor ();
 
     setMode(value: number): void;

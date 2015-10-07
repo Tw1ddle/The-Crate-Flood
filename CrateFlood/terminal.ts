@@ -1,9 +1,9 @@
-///<reference path='tslib/jquery-1.8.d.ts'/>
+///<reference path='tslib/jquery.d.ts'/>
 
 ///<reference path='assert.ts'/>
 
 module Debug {
-    export var TERMINAL_ENABLED: bool = true;
+    export var TERMINAL_ENABLED: boolean = true;
 
     //generic
     var Commands: any = {
@@ -33,6 +33,7 @@ module Debug {
         constructor () {
             assert(TERMINAL_ENABLED, 'terminal initialized with terminal disabled');
 
+            /*
             jQuery(document).ready(function ($) {
                 $('#tilda').tilda(function (input: string, terminal: any): void {
 
@@ -87,6 +88,7 @@ module Debug {
 
                 });
             });
+            */
         }
 
         public write(message: string): void {

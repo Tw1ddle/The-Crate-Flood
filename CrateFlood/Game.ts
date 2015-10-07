@@ -1,7 +1,7 @@
 ///<reference path='IGame.ts'/>
 
 ///<reference path='tslib/three.d.ts'/>
-///<reference path='tslib/jquery-1.8.d.ts'/>
+///<reference path='tslib/jquery.d.ts'/>
 ///<reference path='tslib/stats.d.ts'/>
 
 ///<reference path='assert.ts'/>
@@ -22,15 +22,15 @@ class Game implements IGame {
     private gui: any;
 
     private clock: THREE.Clock = new THREE.Clock(true);
-    private renderer: THREE.CanvasRenderer = new THREE.CanvasRenderer();
+    private renderer: THREE.WebGLRenderer = new THREE.WebGLRenderer();
 
     private loaderscene: BaseScene;
     private startscreenscene: BaseScene;
     private gamescene: BaseScene;
     private pausescene: BaseScene;
 
-    private paused: bool = false;
-    private started: bool = true;
+    private paused: boolean = false;
+    private started: boolean = true;
     
     constructor () {
         if (Debug.GUI_ENABLED) {
@@ -69,7 +69,7 @@ class Game implements IGame {
         this.started = false;
     }
 
-    public togglePaused(p: bool): void {
+    public togglePaused(p: boolean): void {
         console.info(p);
 
         this.paused = p;
@@ -77,7 +77,7 @@ class Game implements IGame {
         console.info(this.paused);
     }
 
-    private render(dt: number): void {
+    public render(dt: number): void {
         this.renderer.clear();
 
         if (!this.started) {
@@ -93,7 +93,7 @@ class Game implements IGame {
         }
     }
 
-    private update(dt: number): void {
+    public update(dt: number): void {
 
         if (!this.started) {
             this.startscreenscene.update(dt);

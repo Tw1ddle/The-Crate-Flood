@@ -30,7 +30,7 @@ class TextItem extends Sprite {
         texture.needsUpdate = true;
 
         super(textDimensions.x, textDimensions.y, texture, position);
-        this.material.overdraw = false; // override overdraw
+        this.material.overdraw = 0; // override overdraw
 
         if (Debug.DRAW_SPRITEBOXES_ENABLED) {
             context.strokeRect(0, 0, canvas.width, canvas.height);
@@ -39,7 +39,7 @@ class TextItem extends Sprite {
     }
 
     // http://jsfiddle.net/jeffchan/WHgaY/76/
-    private multiFillText(context: any, text: string, startPosition: THREE.Vector2, linewidth: number, lineHeight: number, draw: bool) : THREE.Vector2 {
+    private multiFillText(context: any, text: string, startPosition: THREE.Vector2, linewidth: number, lineHeight: number, draw: boolean) : THREE.Vector2 {
         text = text.replace(/(\r\n|\n\r|\r|\n)/g, "\n");
         var sections = text.split("\n");
 

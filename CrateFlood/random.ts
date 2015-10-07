@@ -2,7 +2,7 @@
 
 class Random {
     private static seed: number = 42;
-    private static initialized: bool = false;
+    private static initialized: boolean = false;
 
     public static nextInt() : number {
         return this.generate();
@@ -20,7 +20,7 @@ class Random {
         return min + ((max - min) * this.nextDouble());
     }
 
-    public static nextBoolean(): bool {
+    public static nextboolean(): boolean {
         return (this.generate() % 2) === 0;
     }
 

@@ -7,7 +7,7 @@
 ///<reference path='Config.ts'/>
 
 class Water extends Sprite {
-    constructor (position?: THREE.Vector2, risingRate?: number, rotation?: THREE.Vector3, layer?: number) {
+    constructor(position?: THREE.Vector2, risingRate?: number, rotation?: THREE.Euler, layer?: number) {
         if (layer == null) {
             layer = Layer.waterForeground;
         }
@@ -30,7 +30,7 @@ class Water extends Sprite {
         
 
         super(size.x, size.y, texture, new THREE.Vector3(position.x, position.y, layer), new THREE.Vector2(1, 1));
-        this.material.overdraw = false; //override overdraw
+        this.material.overdraw = 0; //override overdraw
     }
 
     public update(dt: number, scrollPoint: THREE.Vector2) {

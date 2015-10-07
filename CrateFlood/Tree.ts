@@ -5,7 +5,7 @@
 ///<reference path='Assets.ts'/>
 
 class Tree extends Sprite {
-    constructor (position?: THREE.Vector2, rotation?: THREE.Vector3, id? : number, layer?: number) { 
+    constructor(position?: THREE.Vector2, rotation?: THREE.Euler, id?: number, layer?: number) { 
         if (layer == null) {
             layer = Layer.treesForeground;
         }

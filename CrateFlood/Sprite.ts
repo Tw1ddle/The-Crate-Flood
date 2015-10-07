@@ -10,7 +10,7 @@ module Animations {
 
 class Sprite extends THREE.Mesh implements IMoveable {
     constructor (public width: number, public height: number, public texture?: THREE.Texture, position?: THREE.Vector3, scroll?: THREE.Vector2, tileLayout?: THREE.Vector3) {
-        super(new THREE.PlaneGeometry(width, height), new THREE.MeshBasicMaterial({ map: texture, overdraw: true }));
+        super(new THREE.PlaneGeometry(width, height), new THREE.MeshBasicMaterial({ map: texture, overdraw: 1 }));
 
         (<any>(this)).doubleSided = true;
 
@@ -55,7 +55,7 @@ class Sprite extends THREE.Mesh implements IMoveable {
         this.animationTimeAccumulator = 0;
 
         this.texture.wrapS = this.texture.wrapT = THREE.RepeatWrapping;
-        this.texture.repeatVector2 = new THREE.Vector2(1 / this.tileLayout.x, 1 / this.tileLayout.y);
+        this.texture.repeat = new THREE.Vector2(1 / this.tileLayout.x, 1 / this.tileLayout.y);
 
         this.currentFrame++;
 

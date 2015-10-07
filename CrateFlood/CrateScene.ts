@@ -38,9 +38,9 @@ class CrateScene extends BaseScene {
 
 		var player = new Player(new THREE.Vector3(100, 100, Layer.middle));
 
-		var hilltree0 = new Tree(new THREE.Vector2(283, 76), new THREE.Vector3(0, 0, Math.PI/8), 0);
-        var hilltree1 = new Tree(new THREE.Vector2(239, 68), new THREE.Vector3(0, 0, Math.PI/3), 1);
-        var hilltree2 = new Tree(new THREE.Vector2(103, 110), new THREE.Vector3(0, 0, Math.PI/3), 2);
+        var hilltree0 = new Tree(new THREE.Vector2(283, 76), new THREE.Euler(0, 0, Math.PI / 8), 0);
+        var hilltree1 = new Tree(new THREE.Vector2(239, 68), new THREE.Euler(0, 0, Math.PI/3), 1);
+        var hilltree2 = new Tree(new THREE.Vector2(103, 110), new THREE.Euler(0, 0, Math.PI/3), 2);
 
 		this.scene.add(moon);
 		this.scene.add(new Sprite(146, 60, hill1, new THREE.Vector3(270, 30, Layer.hill1), new THREE.Vector2(1, 1)));
@@ -60,9 +60,9 @@ class CrateScene extends BaseScene {
         this.scene.add(new Crate(new THREE.Vector2(102, 195)));
         this.scene.add(new Sprite(400, 19, groundTex, new THREE.Vector3(Config.RENDER_WIDTH / 2, 0, Layer.earthBackground), new THREE.Vector2(1, 1)));
 
-        this.scene.add(new Cloud(new THREE.Vector2(-100, Random.nextDoubleRange(200, 225)), new THREE.Vector3(0, 0, 0), 0));
-        this.scene.add(new Cloud(new THREE.Vector2(-100, Random.nextDoubleRange(150, 200)), new THREE.Vector3(0, 0, 0), 1));
-        this.scene.add(new Cloud(new THREE.Vector2(-100, Random.nextDoubleRange(50, 100)), new THREE.Vector3(0, 0, 0), 2));
+        this.scene.add(new Cloud(new THREE.Vector2(-100, Random.nextDoubleRange(200, 225)), new THREE.Euler(0, 0, 0), 0));
+        this.scene.add(new Cloud(new THREE.Vector2(-100, Random.nextDoubleRange(150, 200)), new THREE.Euler(0, 0, 0), 1));
+        this.scene.add(new Cloud(new THREE.Vector2(-100, Random.nextDoubleRange(50, 100)), new THREE.Euler(0, 0, 0), 2));
 
         this.scene.add(new Water(new THREE.Vector2(Config.RENDER_WIDTH/2, -Config.RENDER_HEIGHT)));
 
